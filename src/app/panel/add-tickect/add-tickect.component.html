@@ -1,0 +1,118 @@
+<img src="img/LOGO.png" id="logo">
+        <nav class="nav">
+            <a class="nav-link" id="inAction" href="#">Home</a>
+            <a class="nav-link text-muted" href="#">Fag</a>
+            <a class="nav-link text-muted" href="#">A Propos</a>
+
+        </nav>
+<style>
+      h3{
+          padding-top: 30px;
+          padding-bottom: 30px;
+      }
+      input{
+          outline: none;
+      }
+      textarea{
+          outline: none;
+      }
+      select{
+          outline: none;
+      }
+      button{
+
+        margin: 20px;
+      }
+      .btn-success{
+           margin-left: 30%;
+      }
+      /* #inAction{
+
+      } */
+      .nav-link:hover{
+          border-bottom: 2px solid rgb(11, 137, 240);
+          transition: .3s;
+      }
+      header{
+        margin: 0;
+        box-shadow: 0 0 10px 0 lightgrey;
+    }
+    #logo{
+        width: 10%;
+        height: 10%;
+        margin: 20px;
+        max-height: 150px;
+        max-width: 100px;
+    }
+    .nav{
+          float: right;
+          margin: 2%;
+          margin-top: 3%;
+      }
+      .container{
+        margin-left: 28%;
+      }
+  </style>
+<div class="container">
+
+          <form (ngSubmit)="saveData(resgisterForm)" #resgisterForm='ngForm'>
+              <h3 class="col-md-12 col-lg-12">CREER VOS TICKETS, <b class="text-primary">FACILEMENT</b> ET <b class="text-success">RAPIDEMENT</b></h3>
+              <div class="form-group row">
+                  <div class="col-sm-2"></div>
+                <label class="col-sm-2 col-form-label">Nom</label>
+                <div class="col-sm-5">
+                    <input type="text" placeholder="Entrez votre nom" class="form-control"
+                    [(ngModel)]="ticket.Name" name="Name">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-2"></div>
+                <label class="col-sm-2 col-form-label">E-Mail</label>
+                <div class="col-sm-5">
+                    <input type="email" class="form-control" placeholder="Entrez votre addrèsse Email"
+                    [(ngModel)]="ticket.Email" name="Email">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-2"></div>
+                <label class="col-sm-2 col-form-label">Nom de l'entreprise</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" placeholder="Entrez le nom de votre entreprise"
+                    [(ngModel)]="ticket.NomEntreprise" name="NomEntreprise">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-2"></div>
+                <label class="col-sm-2 col-form-label">Categorie</label>
+                <div class="col-sm-5">
+                    <select class="form-control" [(ngModel)]="ticket.Categorie" name="Categorie">
+                        <option>(Veuillez choisir bvotre Categorie)</option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                    </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-2"></div>
+                <label class="col-sm-2 col-form-label">Contenu</label>
+                <div class="col-sm-5">
+                    <textarea placeholder="Dites nous quelque choses" class="form-control"
+                    [(ngModel)]="ticket.Contenu" name="Contenu"></textarea>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-2"></div>
+                <label class="col-sm-2 col-form-label">Pieces Jointes</label>
+                <div class="col-sm-5">
+                    <input type="file" class="form-control-file"
+                    [(ngModel)]="ticket.PiecesJointes" name="PiecesJointes">
+                </div>
+              </div>
+
+
+            <button type='submit' class="btn btn-success btn-lg">Soumettre</button>
+            <button class="btn btn-danger btn-lg">Quitter</button>
+          </form>
+
+    </div>

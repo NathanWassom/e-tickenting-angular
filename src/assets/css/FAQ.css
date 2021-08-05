@@ -1,0 +1,41 @@
+header{
+    margin: 0;
+    box-shadow: 0 0 10px 0 lightgrey;
+}
+#logo{
+    width: 8%;
+    height: 8%;
+    margin: 20px;
+}
+.nav{
+      float: right;
+      margin: 2%;
+      margin-top: 3%;
+      font-size: large;
+  }
+  .nav-link:hover{
+      border-bottom: 2px solid rgb(11, 137, 240);
+      transition: .4s;
+  }
+  #header1{
+      margin-top: 3%;
+      font-size: 300%;
+  }
+  #header2{
+      font-size: 160%;
+      margin: 20px;
+      margin-bottom: 40px;
+  }
+  ul{
+      list-style: none;
+      margin-top: 20px;
+  }
+  .btn:focus{
+      outline: none !important;
+  }
+  body{
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .card-header{
+      outline: none !important;
+  }

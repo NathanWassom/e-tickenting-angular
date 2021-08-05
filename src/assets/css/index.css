@@ -1,0 +1,20 @@
+body{
+    background-image: url("C:\Users\Yann Donald\Desktop\E-Ticketing\E-ticketing v1.2\img\e-ticketing-log.jpg");
+    background-size: cover;
+    color: white;
+}
+B{
+    padding: 5PX;
+    background-color: rgb(34, 177, 76);
+}
+h1{
+    padding-top: 15%;
+    margin-bottom: 3%;
+}
+a{
+    color: white;
+}
+a:hover{
+    color: white;
+    text-decoration: none;
+}
