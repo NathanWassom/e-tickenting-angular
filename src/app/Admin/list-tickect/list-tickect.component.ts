@@ -11,5 +11,4 @@ export class ListTickectComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

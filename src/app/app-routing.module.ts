@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppShellComponent } from './Admin/app-shell/app-shell.component';
+import { AuthGuard } from './guards/auth.guard';
 // import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -17,10 +18,22 @@ const routes: Routes = [
     path: 'cpanel',
     component: AppShellComponent,
     children: [
-      { path: 'dashboard', component: HomeComponent },
-      { path: 'add-user', component: AddUserComponent },
-      { path: 'ges-users', component: GesUsersComponent },
-      { path: 'list-ticket', component: ListTickectComponent },
+      { path: 'dashboard', canActivate: [AuthGuard], component: HomeComponent },
+      {
+        path: 'add-user',
+        canActivate: [AuthGuard],
+        component: AddUserComponent,
+      },
+      {
+        path: 'ges-users',
+        canActivate: [AuthGuard],
+        component: GesUsersComponent,
+      },
+      {
+        path: 'list-ticket',
+        canActivate: [AuthGuard],
+        component: ListTickectComponent,
+      },
     ],
   },
   { path: 'home', component: AddTickectComponent },
@@ -32,10 +45,8 @@ const routes: Routes = [
   { path: '**', redirectTo: 'error404', pathMatch: 'full' },
 ];
 
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
-
+export class AppRoutingModule {}

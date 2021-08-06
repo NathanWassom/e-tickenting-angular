@@ -1,8 +1,10 @@
+import { Router } from '@angular/router';
 import { SignInData } from 'src/app/model/signinData';
 // import { AuthenticationService } from '../service/authentication/authentication.service';
 import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../../assets/services/user.model';
+import { AuthService } from 'src/app/service/authentication/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,14 +17,28 @@ export class LoginComponent implements OnInit {
   isFormInvalid = false;
   areCredentialsInvalid = false;
 
-  // constructor(private authenticationService: AuthenticationService) { }
+  public isAuth: boolean = false;
+
+  constructor(
+    // private authenticationService: AuthenticationService,
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    this.isAuth = this.authService.isAuth;
   }
 
-  public onSignIn(signInForm: NgForm) {
-    console.log("valeurs: ", JSON.stringify(signInForm.value));
+  onSignIn(signInForm: NgForm) {
+    if (signInForm.valid) {
+      this.authService.singnIn(signInForm.value.email, signInForm.value.password).then(() => {
+      this.isAuth = this.authService.isAuth;
+      this.router.navigate(['/cpanel/dashboard']);
+    });
+    }
   }
+
+
 }
 //   onSubmit(signInForm: NgForm){
 //     if(!signInForm.valid){

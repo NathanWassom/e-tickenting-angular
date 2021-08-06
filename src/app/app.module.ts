@@ -11,9 +11,10 @@ import { FaqComponent } from './faq/faq.component';
 import { AProposComponent } from './Admin/a-propos/a-propos.component';
 import { LoginComponent } from './Admin/login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { AppShellComponent } from './Admin/app-shell/app-shell.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -35,8 +36,8 @@ import { AppShellComponent } from './Admin/app-shell/app-shell.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [ ],
   bootstrap: [AppComponent]
