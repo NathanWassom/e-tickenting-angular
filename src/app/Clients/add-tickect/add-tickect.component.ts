@@ -3,7 +3,7 @@ import { Ticket } from './ticket';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'add-ticket',
+  selector: 'app-add-tickect',
   templateUrl: './add-tickect.component.html',
   styleUrls: ['./add-tickect.component.css']
 })

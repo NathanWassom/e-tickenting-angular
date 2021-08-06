@@ -19,6 +19,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  public onSignIn(signInForm: NgForm) {
+    console.log("valeurs: ", JSON.stringify(signInForm.value));
+  }
 }
 //   onSubmit(signInForm: NgForm){
 //     if(!signInForm.valid){

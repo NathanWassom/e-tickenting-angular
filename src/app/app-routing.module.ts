@@ -5,7 +5,7 @@ import { ListTickectComponent } from './Admin/list-tickect/list-tickect.componen
 import { FaqComponent } from './faq/faq.component';
 import { GesUsersComponent } from './Admin/ges-users/ges-users.component';
 import { AddUserComponent } from './Admin/add-user/add-user.component';
-import { AddTickectComponent } from './Admin/add-tickect/add-tickect.component';
+import { AddTickectComponent } from './Clients/add-tickect/add-tickect.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -17,17 +17,17 @@ const routes: Routes = [
     path: 'cpanel',
     component: AppShellComponent,
     children: [
-      { path: 'home', component: HomeComponent },
+      { path: 'dashboard', component: HomeComponent },
       { path: 'add-user', component: AddUserComponent },
       { path: 'ges-users', component: GesUsersComponent },
       { path: 'list-ticket', component: ListTickectComponent },
     ],
   },
-  { path: 'add-ticket', component: AddTickectComponent },
+  { path: 'home', component: AddTickectComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'faq', component: FaqComponent },
   { path: 'a-propos', component: AProposComponent },
   { path: 'sign-in', component: LoginComponent },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'error404', component: PageNotFoundComponent },
   { path: '**', redirectTo: 'error404', pathMatch: 'full' },
 ];
