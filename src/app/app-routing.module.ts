@@ -14,30 +14,27 @@ import { AuthGuard } from './guards/auth.guard';
 // import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
+  { path: 'home', component: AddTickectComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'cpanel',
     component: AppShellComponent,
     children: [
-      { path: 'dashboard', canActivate: [AuthGuard], component: HomeComponent },
+      { path: 'dashboard', component: HomeComponent },
       {
         path: 'add-user',
-        canActivate: [AuthGuard],
         component: AddUserComponent,
       },
       {
         path: 'ges-users',
-        canActivate: [AuthGuard],
         component: GesUsersComponent,
       },
       {
         path: 'list-ticket',
-        canActivate: [AuthGuard],
         component: ListTickectComponent,
       },
     ],
   },
-  { path: 'home', component: AddTickectComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'faq', component: FaqComponent },
   { path: 'a-propos', component: AProposComponent },
   { path: 'sign-in', component: LoginComponent },

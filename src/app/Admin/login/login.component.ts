@@ -3,13 +3,13 @@ import { SignInData } from 'src/app/model/signinData';
 // import { AuthenticationService } from '../service/authentication/authentication.service';
 import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../../assets/services/user.model';
 import { AuthService } from 'src/app/service/authentication/auth.service';
+import { User } from 'src/assets/services/user.model';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   user = new User();
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     // private authenticationService: AuthenticationService,
     private authService: AuthService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.isAuth = this.authService.isAuth;
@@ -31,14 +31,19 @@ export class LoginComponent implements OnInit {
 
   onSignIn(signInForm: NgForm) {
     if (signInForm.valid) {
-      this.authService.singnIn(signInForm.value.email, signInForm.value.password).then(() => {
-      this.isAuth = this.authService.isAuth;
-      this.router.navigate(['/cpanel/dashboard']);
-    });
+      this.authService
+        .singnIn(signInForm.value.email, signInForm.value.password)
+        .subscribe({
+          next: (res) => {
+            if (!res) {
+              this.router.navigate(['/auth/sign-in']);
+            }
+            this.isAuth = this.authService.isAuth;
+            this.router.navigate(['/cpanel/dashboard']);
+          },
+        });
     }
   }
-
-
 }
 //   onSubmit(signInForm: NgForm){
 //     if(!signInForm.valid){

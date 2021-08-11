@@ -27,10 +27,10 @@ export class AuthGuard implements CanActivate {
     // }
     if (this.authService.isAuth) {
       return true;
-    } else {
+    }
+
       this.router.navigate(['/sign-in']);
       return false;
-    }
 
   }
 }

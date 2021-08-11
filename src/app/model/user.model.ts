@@ -1,5 +1,8 @@
 export class User{
-  username: string | undefined;
-  password: string | undefined ;
-  roles: string[] | undefined;
+
+  nom: string | undefined;
+  email: string | undefined;
+  tel: string | undefined;
+  role: string | undefined;
+  token?: string;
 }
