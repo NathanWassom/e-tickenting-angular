@@ -1,28 +1,35 @@
 import { NgForm } from '@angular/forms';
 import { Ticket } from './ticket';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Tickets } from 'src/app/Admin/list-tickect/ticket';
+import { TicketService } from 'src/app/service/ticket.service';
 
 @Component({
   selector: 'app-add-tickect',
-  templateUrl: './add-tickect.component.html',
-  styleUrls: ['./add-tickect.component.css']
+  templateUrl: '../add-tickect/add-tickect.component.html',
+  styleUrls: ['../add-tickect/add-tickect.component.css']
 })
 export class AddTickectComponent implements OnInit {
 
 
-  public ticket: Ticket = new Ticket();
+  public newTicket: Tickets = new Tickets();
 
 
 
-  constructor() { }
+  constructor(private TicketService : TicketService, 
+              private router:Router) { }
 
   ngOnInit(): void {
   }
 
-  public saveData(registerForm: NgForm) {
-    console.log(registerForm.form)
-    console.log('valeurs:', JSON.stringify(registerForm.value))
-
-    console.log("Hello")
+  public addTicket(){
+    // this.TicketService.ajouterTicket(this.newTicket)
+    // .subscribe(tick => {
+      console.log(this.newTicket);
+    // });
+    // this.router.navigate(['/cpanel/tickets-panel']).then(() => {
+    //   window.location.reload();
+    //   });
   }
 }

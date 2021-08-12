@@ -5,11 +5,12 @@ import { ListTickectComponent } from './Admin/list-tickect/list-tickect.componen
 import { FaqComponent } from './faq/faq.component';
 import { GesUsersComponent } from './Admin/ges-users/ges-users.component';
 import { AddUserComponent } from './Admin/add-user/add-user.component';
-import { AddTickectComponent } from './Clients/add-tickect/add-tickect.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppShellComponent } from './Admin/app-shell/app-shell.component';
+import { AddTickectComponent } from './Clients/add-tickect/add-tickect.component';
+import { AddTicketPanelComponent } from './Admin/add-ticket-panel/add-ticket-panel.component';
 // import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -21,6 +22,8 @@ const routes: Routes = [
       { path: 'add-user', component: AddUserComponent },
       { path: 'ges-users', component: GesUsersComponent },
       { path: 'list-ticket', component: ListTickectComponent },
+      { path: 'add-ticket-panel', component: AddTicketPanelComponent },
+
     ],
   },
   { path: 'home', component: AddTickectComponent },
