@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Tickets } from '../Admin/list-tickect/ticket';
 
 
@@ -13,7 +14,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class TicketService {
-  private apiURL: string = 'http://localhost:8000/api';
+  // private apiURL: string = 'http://localhost:8000/api';
 
   
   tickets: Tickets[] | undefined;
@@ -23,7 +24,7 @@ export class TicketService {
   }
 
   public getAllTickets(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiURL+'/tickets');
+    return this.http.get<any[]>(environment.apiDomain+'/tickets');
   }
 
   public ajouterTicket(
@@ -35,8 +36,8 @@ export class TicketService {
       titre :string,
       tel: string
   ): Observable<Tickets>{
-    
-    return this.http.post<Tickets>(this.apiURL+'/tickets',{
+    // let user_id = JSON.parse(localStorage.getItem(environment.localStorageKey))['id'];
+    return this.http.post<Tickets>(environment.apiDomain+'/tickets',{
       nom, 
       entreprise,
       email,
@@ -48,7 +49,7 @@ export class TicketService {
   } 
 
   supprimerTicket(id : number) {
-      const url = `${this.apiURL}/${id}`;
+      const url = `${environment.apiDomain+'/tickets'}/${id}`;
       return this.http.delete(url, httpOptions);
       }
 }
