@@ -36,7 +36,7 @@ export class TicketService {
       titre :string,
       tel: string
   ): Observable<Tickets>{
-    // let user_id = JSON.parse(localStorage.getItem(environment.localStorageKey))['id'];
+    
     return this.http.post<Tickets>(environment.apiDomain+'/tickets',{
       nom, 
       entreprise,
