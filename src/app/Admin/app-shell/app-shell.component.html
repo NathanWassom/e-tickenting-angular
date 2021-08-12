@@ -176,10 +176,10 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link has-treeview">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Gestion des Users
+                Gestion Utilisateurs
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -212,16 +212,10 @@
             </a>
           </li>
           <li class="nav-item pointer">
-            <a href="#" class="nav-link">
-
-              <!-- <a (click)="logout()" class="nav-link"> -->
+            <a (click)="onSignOut()" style="cursor: pointer;" class="nav-link">
               <i class="nav-icon far fa-plus-square"></i>
-              <p>
-                se Deconnecter
-              </p>
+              <p>se Deconnecter</p>
             </a>
-
-
           </li>
 
         </ul>

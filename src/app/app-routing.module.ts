@@ -14,6 +14,8 @@ import { AddTicketPanelComponent } from './Admin/add-ticket-panel/add-ticket-pan
 // import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
+  { path: 'home', component: AddTickectComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'cpanel',
     component: AppShellComponent,
@@ -24,10 +26,20 @@ const routes: Routes = [
       { path: 'list-ticket', component: ListTickectComponent },
       { path: 'add-ticket-panel', component: AddTicketPanelComponent },
 
+      {
+        path: 'add-user',
+        component: AddUserComponent,
+      },
+      {
+        path: 'ges-users',
+        component: GesUsersComponent,
+      },
+      {
+        path: 'list-ticket',
+        component: ListTickectComponent,
+      },
     ],
   },
-  { path: 'home', component: AddTickectComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'faq', component: FaqComponent },
   { path: 'a-propos', component: AProposComponent },
   { path: 'sign-in', component: LoginComponent },
@@ -35,10 +47,8 @@ const routes: Routes = [
   { path: '**', redirectTo: 'error404', pathMatch: 'full' },
 ];
 
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
-
+export class AppRoutingModule {}
