@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Tickets } from '../Admin/list-tickect/ticket';
 
 
@@ -23,7 +24,7 @@ export class TicketService {
   }
 
   public getAllTickets(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiURL+'/tickets');
+    return this.http.get<any[]>(environment.apiDomain+'/tickets');
   }
 
   public ajouterTicket(
@@ -36,7 +37,7 @@ export class TicketService {
       tel: string
   ): Observable<Tickets>{
     
-    return this.http.post<Tickets>(this.apiURL+'/tickets',{
+    return this.http.post<Tickets>(environment.apiDomain+'/tickets',{
       nom, 
       entreprise,
       email,
