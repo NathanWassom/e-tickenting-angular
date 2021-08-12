@@ -1,0 +1,87 @@
+<img src="../../../assets/img/LOGO.png" id="logo">
+<nav class="nav">
+    <a class="nav-link" id="inAction" href="#">Home</a>
+    <a class="nav-link text-muted" href="#">FAQ</a>
+    <a class="nav-link text-muted" href="#">A Propos</a>
+
+</nav>
+<div class="container">
+
+  <form novalidate (ngSubmit)="addTicket(data)" #data="ngForm"> 
+      <h3 class="col-md-12 col-lg-12">CREER VOS TICKETS, <b class="text-primary">FACILEMENT</b> ET <b class="text-success">RAPIDEMENT</b></h3>
+      <div class="form-group row">
+          <div class="col-sm-2"></div>
+        <label class="col-sm-2 col-form-label">Nom</label>
+        <div class="col-sm-5">
+            <input type="text" placeholder="Entrez votre nom" class="form-control"
+            [(ngModel)]="ticket.nom" name="nom">
+        </div>
+      </div>
+      
+      <div class="form-group row">
+        <div class="col-sm-2"></div>
+        <label class="col-sm-2 col-form-label">email</label>
+        <div class="col-sm-5">
+            <input type="email" class="form-control" placeholder="Entrez votre addrèsse Email"
+            [(ngModel)]="ticket.email" name="email">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-2"></div>
+        <label class="col-sm-2 col-form-label">entreprise</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" placeholder="Entrez votre entreprise"
+            [(ngModel)]="ticket.entreprise" name="entreprise">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-2"></div>
+        <label class="col-sm-2 col-form-label">titre</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" placeholder="Entrez le nom de votre entreprise"
+            [(ngModel)]="ticket.titre" name="titre">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-2"></div>
+        <label class="col-sm-2 col-form-label">telephone</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" placeholder="Entrez le telephone"
+            [(ngModel)]="ticket.tel" name="tel">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-2"></div>
+        <label class="col-sm-2 col-form-label">Categorie</label>
+        <div class="col-sm-5">
+            <select class="form-control" [(ngModel)]="ticket.categorie_id" name="categorie_id">
+                <option value="1">1</option>
+                <option lvaue="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-2"></div>
+        <label class="col-sm-2 col-form-label">Contenu</label>
+        <div class="col-sm-5">
+            <textarea placeholder="Dites nous quelque choses" class="form-control"
+            [(ngModel)]="ticket.contenu" name="contenu"></textarea>
+        </div>
+      </div>
+      <!-- <div class="form-group row">
+        <div class="col-sm-2"></div>
+        <label class="col-sm-2 col-form-label">Pieces Jointes</label>
+        <div class="col-sm-5">
+            <input type="file" class="form-control-file"
+            [(ngModel)]="ticket.PiecesJointes" name="PiecesJointes">
+        </div>
+      </div> -->
+
+
+      <button type="submit" class="btn btn-success">Ajouter</button>
+      <button class="btn btn-danger btn-lg">Quitter</button>
+  </form>
+
+</div>
