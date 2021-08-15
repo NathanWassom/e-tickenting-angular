@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/authentication/auth.service';
@@ -9,13 +10,13 @@ import { AuthService } from 'src/app/service/authentication/auth.service';
 })
 export class AppShellComponent implements OnInit {
   isAuth!: boolean;
+  lstorage = JSON.parse(localStorage.getItem(environment.localStorageKey)!);
+  username!: string;
+  constructor(private authService: AuthService, private router: Router) {}
 
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) { }
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.username = this.lstorage['nom'];
+  }
 
   onSignOut() {
     this.authService.signOut();

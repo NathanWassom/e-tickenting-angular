@@ -19,6 +19,8 @@ export class LoginComponent implements OnInit {
 
   public isAuth: boolean = false;
 
+  checkLog: boolean = false;
+
   constructor(
     // private authenticationService: AuthenticationService,
     private authService: AuthService,
@@ -41,8 +43,13 @@ export class LoginComponent implements OnInit {
             this.isAuth = this.authService.isAuth;
             this.router.navigate(['/cpanel/dashboard']);
           },
+          error: () => this.checkLog = true
         });
     }
+  }
+
+  closeLabel() {
+    this.checkLog = false;
   }
 }
 //   onSubmit(signInForm: NgForm){

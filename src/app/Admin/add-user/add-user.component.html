@@ -9,43 +9,151 @@
     <div class="col-lg-2">
     </div>
     <div class="col-md-8 sample">
+      <div [class]="'alert alert-' + labelColor + ' d-flex justify-content-between'" *ngIf="isInsert || isNotInsert">
+        <span class="align-self-center"> {{ responseText }}</span>
+        <span class="align-self-baseline" (click)="closeLabel()"><i style="cursor: pointer;" class="fa fa-close"></i></span>
+      </div>
+
+      <!-- <div class="alert alert-danger d-flex justify-content-between" *ngIf="isNotInsert">
+        <span class="align-self-center"> Ticket crée avec success!</span>
+        <span class="align-self-start" (click)="closeLabelDanger()"><i style="cursor: pointer;" class="fa fa-close"></i></span>
+      </div> -->
+
      <h1 class="text-muted"><b>Gestions Des Users</b></h1><hr>
-        <form>
+        <form novalidate (ngSubmit)="onCreate(addUserForm)" #addUserForm="ngForm">
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Nom</label>
             <div class="col-sm-10">
-                <input type="text" placeholder="Entrez votre nom" class="form-control">
+                <input type="text"
+                      placeholder="Entrez le nom"
+                      class="form-control"
+                      name="nom"
+                      required
+                      [(ngModel)]="users.nom"
+                      #nomVar="ngModel"
+                      [ngClass]="{
+                        'is-invalid': nomVar.touched && !nomVar.valid
+                      }"
+                  >
+                  <div class="invalid-feedback">
+                    <span class="text-danger" *ngIf="nomVar.errors?.required">
+                      Veuillez renseigner le nom
+                    </span>
+                  </div>
             </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">E-Mail</label>
             <div class="col-sm-10">
-                <input type="email" class="form-control" placeholder="Entrez votre adresse Email">
+                <input type="email"
+                      class="form-control"
+                      placeholder="Entrez l'adresse Email"
+                      name="email"
+                      required
+                      [(ngModel)]="users.email"
+                      #emailVar="ngModel"
+                      [ngClass]="{
+                        'is-invalid': emailVar.touched && !emailVar.valid
+                      }"
+                >
+                <div class="invalid-feedback">
+                  <span class="text-danger" *ngIf="emailVar.errors?.required">
+                    Veuillez renseigner l'email
+                  </span>
+                  <span class="text-danger" *ngIf="emailVar.errors?.email">
+                    Entrez un email valide
+                  </span>
+                </div>
             </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Mot de passe</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" placeholder="entrez votre mot de passe">
+                <input type="password"
+                      class="form-control"
+                      placeholder="Entrez le mot de passe"
+                      minlength="6"
+                      name="password"
+                      required
+                      [(ngModel)]="users.password"
+                      #passwordVar="ngModel"
+                      [ngClass]="{
+                        'is-invalid': passwordVar.touched && !passwordVar.valid
+                      }"
+                  >
+                  <div class="invalid-feedback">
+                    <span class="text-danger" *ngIf="passwordVar.errors?.required">
+                      Veuillez renseigner le nom
+                    </span>
+                    <span class="text-danger" *ngIf="passwordVar.errors?.minlength">
+                      Le mot de passe doit contenir au minimum 6 caractères
+                    </span>
+                  </div>
             </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Confirmer Mot de passe</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" placeholder="entrez votre mot de passe">
+                <input type="password"
+                      class="form-control"
+                      placeholder="Entrez votre mot de passe"
+                      name="confirmPassword"
+                      required
+                      [(ngModel)]="users.confirmPassword"
+                      #confirmPasswordVar="ngModel"
+                >
+                <span class="text-danger" *ngIf="checkPass">
+                  Les mots de passe doivent être similaires
+                </span>
             </div>
           </div>
 
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Tel</label>
             <div class="col-sm-10">
-                <input type="text" placeholder="+237 " class="form-control">
+                <input type="text"
+                      placeholder="+237 "
+                      class="form-control"
+                      name="tel"
+                      required
+                      [(ngModel)]="users.tel"
+                      #telVar="ngModel"
+                      [ngClass]="{
+                        'is-invalid': telVar.touched && !telVar.valid
+                      }"
+                >
+                <div class="invalid-feedback">
+                  <span class="text-danger" *ngIf="telVar.errors?.required">
+                    Veuillez renseigner le mot de passe
+                  </span>
+                  <span class="text-danger" *ngIf="telVar.errors?.minlength">
+                    Le mot de passe doit contenir au minimum 6 caractères
+                  </span>
+                </div>
             </div>
           </div>
           <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Roles</label>
+            <label class="col-sm-2 col-form-label">Role</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control">
+                <select
+                  name="role"
+                  id="role"
+                  class="custom-select"
+                  [(ngModel)]="users.role"
+                  #roleVar="ngModel"
+                  required
+                  [ngClass]="{
+                        'is-invalid': roleVar.touched && !roleVar.valid
+                      }"
+                >
+                  <option value="Développeur">Développeur</option>
+                  <option value="Gestionnaire">Gestionnaire</option>
+                </select>
+                <div class="invalid-feedback">
+                  <span class="text-danger" *ngIf="roleVar.errors?.required">
+                    Veuillez sélectionner un rôle
+                  </span>
+                </div>
             </div>
           </div>
           <button class="btn btn-success btn-lg">Soumettre</button> <button class="btn btn-danger btn-lg">Quitter</button>
@@ -54,28 +162,4 @@
     </div>
 </div>
   </div>
-<style>
-    #logo{
-          width: 150px;
-          height: 70px;
-          margin: 10px;
-      }
-      form{
-        padding-top: 2%;
-      }
-      button{
-          margin: 20px;
-      }
-      .sample{
-        padding: 5%;
-      }
-      footer{
-        background-color: rgba(0, 0, 0, .1);
-        padding: 2.1%;
-      }
-      .closed{
-        border-right: 1px solid grey;
-        box-shadow: 0 0 0 0ch lightgrey;
-        height: 100%;
-      }
-</style>
+

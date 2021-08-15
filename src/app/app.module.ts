@@ -18,6 +18,7 @@ import { AddTicketPanelComponent } from './Admin/add-ticket-panel/add-ticket-pan
 import { TicketService } from './service/ticket.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './service/authentication/auth.interceptor';
+import { EditUserComponent } from './Admin/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AuthInterceptor } from './service/authentication/auth.interceptor';
     AcceuilComponent,
     AppShellComponent,
     AddTicketPanelComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,
