@@ -14,7 +14,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class TicketService {
-  private apiURL: string = 'http://localhost:8000/api';
+  // private apiURL: string = 'http://localhost:8000/api0';
 
   
   tickets: Tickets[] | undefined;
@@ -25,6 +25,10 @@ export class TicketService {
 
   public getAllTickets(): Observable<any[]> {
     return this.http.get<any[]>(environment.apiDomain+'/tickets');
+  }
+  public getOneTicket(id:number): Observable<Tickets> {
+    return this.http.get<Tickets>(environment.apiDomain+'/tickets/'+id);
+    
   }
 
   public ajouterTicket(
@@ -49,7 +53,7 @@ export class TicketService {
   } 
 
   supprimerTicket(id : number) {
-      const url = `${this.apiURL}/${id}`;
+      const url = `${environment.apiDomain+'/tickets'}/${id}`;
       return this.http.delete(url, httpOptions);
       }
 }
