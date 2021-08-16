@@ -12,6 +12,7 @@ import { AppShellComponent } from './Admin/app-shell/app-shell.component';
 import { AddTickectComponent } from './Clients/add-tickect/add-tickect.component';
 import { AddTicketPanelComponent } from './Admin/add-ticket-panel/add-ticket-panel.component';
 import { TicketDetailComponent } from './Admin/ticket-detail/ticket-detail.component';
+import { EditUserComponent } from './Admin/edit-user/edit-user.component';
 // import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -34,6 +35,10 @@ const routes: Routes = [
       {
         path: 'ges-users',
         component: GesUsersComponent,
+      },
+      {
+        path: 'edit-user/:id',
+        component: EditUserComponent
       },
       {
         path: 'list-ticket',
