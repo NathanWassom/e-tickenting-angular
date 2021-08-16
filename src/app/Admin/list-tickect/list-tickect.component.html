@@ -41,7 +41,7 @@
                         <!-- <button type="submit" (click)="addTicket()" class="btn btn-success">Ajouter</button> -->
 
                   <a href="#"><span class="fa fa-edit"></span></a>
-                  <!-- <a href="#"><span class="fa fa-trash" (click)="supprimerTicket(ticket)"></span></a> -->
+                  <a [routerLink]="['/cpanel/ticket-detail', ticket.id]"><span class="fa fa-trash" ></span></a>
                 </td>
               </tr>
                 

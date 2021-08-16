@@ -10,6 +10,8 @@ export class Tickets{
   public email?: string | undefined;
   public entreprise: string | undefined;
   public tel?: string | undefined
+  public nom_client? : string;
+  public id : number | undefined;
   // public PiecesJointes: string | undefined;
 
 }

@@ -11,6 +11,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppShellComponent } from './Admin/app-shell/app-shell.component';
 import { AddTickectComponent } from './Clients/add-tickect/add-tickect.component';
 import { AddTicketPanelComponent } from './Admin/add-ticket-panel/add-ticket-panel.component';
+import { TicketDetailComponent } from './Admin/ticket-detail/ticket-detail.component';
 // import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -38,6 +39,11 @@ const routes: Routes = [
         path: 'list-ticket',
         component: ListTickectComponent,
       },
+      {
+        path: 'ticket-detail/:id',
+        component: TicketDetailComponent,
+      },
+
     ],
   },
   { path: 'faq', component: FaqComponent },
