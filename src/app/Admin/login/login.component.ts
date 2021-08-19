@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
         .singnIn(signInForm.value.email, signInForm.value.password)
         .subscribe({
           next: (res) => {
+            console.log("ok")
             if (!res) {
               this.router.navigate(['/auth/sign-in']);
             }

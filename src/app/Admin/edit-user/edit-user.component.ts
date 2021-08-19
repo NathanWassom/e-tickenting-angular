@@ -20,7 +20,11 @@ export class EditUserComponent implements OnInit {
 
   id: number = +this.route.snapshot.paramMap.get('id')!;
 
-  constructor(private route: ActivatedRoute, private _userSrv: UserService, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private _userSrv: UserService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this._userSrv.getOneUser(this.id).subscribe({
@@ -43,13 +47,13 @@ export class EditUserComponent implements OnInit {
             this.isInsert = true;
             this.responseText = 'Informations modifiées avec success!';
             this.labelColor = 'success';
-            this.router.navigate(['/cpanel/edit-user/', this.id])
+            this.router.navigate(['/cpanel/edit-user/', this.id]);
           },
           error: () => {
             this.isNotInsert = true;
             this.responseText =
               'Une erreur est survenue lors de la modification!';
-            this.labelColor = 'danger';
+            this.labelColor = 'warning';
           },
         });
     }
@@ -57,5 +61,35 @@ export class EditUserComponent implements OnInit {
 
   closeLabel() {
     this.isInsert = false;
+  }
+
+  onUpdatePassword(updatePasswordForm: NgForm) {
+    if (
+      updatePasswordForm.value.password ===
+      updatePasswordForm.value.confirmPassword
+    ) {
+      this.checkPass = false;
+
+      if (updatePasswordForm.valid) {
+        this._userSrv
+          .updatePassword(this.id, updatePasswordForm.value.password)
+          .subscribe({
+            next: () => {
+              this.isInsert = true;
+              this.responseText = 'Mot de passe modifié avec success!';
+              this.labelColor = 'success';
+              this.router.navigate(['/cpanel/edit-user/', this.id]);
+            },
+            error: () => {
+              this.isNotInsert = true;
+              this.responseText =
+                'Une erreur est survenue lors de la modification!';
+              this.labelColor = 'warning';
+            },
+          });
+      }
+    } else {
+      this.checkPass = true;
+    }
   }
 }

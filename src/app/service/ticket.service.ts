@@ -16,7 +16,7 @@ const httpOptions = {
 export class TicketService {
   constructor(private http: HttpClient) {}
 
-  
+
   tickets: Tickets[] | undefined;
 
 
@@ -25,17 +25,26 @@ export class TicketService {
   }
   
   public getOneTicket(id:number): Observable<Tickets> {
+<<<<<<< HEAD
     return this.http.get<Tickets>(`${environment.apiDomain}/tickets/${id}`)
     .pipe(
       tap((t) => console.log(t))
       );
     
+=======
+    return this.http.get<Tickets>(environment.apiDomain+'/tickets/'+id);
+
+>>>>>>> faa56bfc5d32ce0db82bfb6de558da69e1743c04
   }
 
   
   public ajouterTicket(
+<<<<<<< HEAD
 
       nom: string, 
+=======
+      nom: string,
+>>>>>>> faa56bfc5d32ce0db82bfb6de558da69e1743c04
       entreprise :string,
       email:string ,
       categorie_id: number,
@@ -46,7 +55,7 @@ export class TicketService {
     const data = JSON.parse(localStorage.getItem(environment.localStorageKey)!);
     const user_id = data['id']; 
     return this.http.post<Tickets>(environment.apiDomain+'/tickets',{
-      nom, 
+      nom,
       entreprise,
       email,
       categorie_id,
@@ -55,7 +64,7 @@ export class TicketService {
       tel,
       user_id,
     } ).pipe(tap(t => console.log(t))  )
-  } 
+  }
 
   updateTicket(
       id:number,
