@@ -23,28 +23,18 @@ export class TicketService {
   public getAllTickets(): Observable<any[]> {
     return this.http.get<any[]>(environment.apiDomain+'/tickets');
   }
-  
+
   public getOneTicket(id:number): Observable<Tickets> {
-<<<<<<< HEAD
     return this.http.get<Tickets>(`${environment.apiDomain}/tickets/${id}`)
     .pipe(
       tap((t) => console.log(t))
       );
-    
-=======
-    return this.http.get<Tickets>(environment.apiDomain+'/tickets/'+id);
 
->>>>>>> faa56bfc5d32ce0db82bfb6de558da69e1743c04
   }
 
-  
-  public ajouterTicket(
-<<<<<<< HEAD
 
-      nom: string, 
-=======
+  public ajouterTicket(
       nom: string,
->>>>>>> faa56bfc5d32ce0db82bfb6de558da69e1743c04
       entreprise :string,
       email:string ,
       categorie_id: number,
@@ -53,7 +43,7 @@ export class TicketService {
       tel: string,
   ): Observable<any>{
     const data = JSON.parse(localStorage.getItem(environment.localStorageKey)!);
-    const user_id = data['id']; 
+    const user_id = data['id'];
     return this.http.post<Tickets>(environment.apiDomain+'/tickets',{
       nom,
       entreprise,
@@ -68,7 +58,7 @@ export class TicketService {
 
   updateTicket(
       id:number,
-      nom: string, 
+      nom: string,
       entreprise :string,
       email:string ,
       contenu :string,
