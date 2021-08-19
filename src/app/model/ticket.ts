@@ -6,6 +6,7 @@ export class Tickets{
   public user_id: number | undefined;
   public titre: string | undefined;
   public contenu: string | undefined;
+  public online?: string;
 
   public email: string | undefined;
   public entreprise: string | undefined;

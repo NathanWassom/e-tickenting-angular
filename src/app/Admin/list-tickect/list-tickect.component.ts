@@ -11,7 +11,7 @@ import { Tickets } from './ticket';
 })
 export class ListTickectComponent implements OnInit {
 
-  tickets: Tickets[] | undefined;
+  tickets: any[] | undefined;
 
   constructor(private ticketService: TicketService,
               private router: Router ) {
@@ -22,25 +22,20 @@ export class ListTickectComponent implements OnInit {
 
   ngOnInit(): void {
   
-  this.ticketService.getAllTickets().subscribe(list =>{
-    console.log(list);
-    this.tickets = list;
+  this.ticketService.getAllTickets().subscribe({
+    next:(ticket) =>(
+      this.tickets = ticket
+      ),
+  });
+}
+delete(id: number | undefined) {
+  return this.ticketService.delete(id).subscribe({
+    next: () => {
+      console.log('OK');
+      this.router.navigate(['/list-tickect']);
+    },
   });
 }
 
-// supprimerTicket(t : Tickets) {
-
-
-//   let conf = confirm("Etes-vous sûr?");
-//   if(conf)
-//     this.ticketService.supprimerTicket(t.id).subscribe(() =>{
-//       console.log("Ticket supprimé");
-//     });
-//     // this.router.navigate(['/cpanel/list-ticket']).then(() => {
-//     //   window.location.reload();
-//     //   });
-  
- 
-//   }
 
 }

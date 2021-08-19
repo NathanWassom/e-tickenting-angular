@@ -10,7 +10,7 @@
     <span class="align-self-center"> {{ responseText }}</span>
     <span class="align-self-baseline" (click)="closeLabel()"><i style="cursor: pointer;" class="fa fa-close"></i></span>
   </div>
-  <form novalidate (ngSubmit)="addTicket(data)" #data="ngForm"> 
+  <form novalidate (ngSubmit)="onUpdate(data)" #data="ngForm"> 
       <h3 class="col-md-12 col-lg-12">CREER VOS TICKETS, <b class="text-primary">FACILEMENT</b> ET <b class="text-success">RAPIDEMENT</b></h3>
       <div class="form-group row">
           <div class="col-sm-2"></div>
@@ -36,7 +36,7 @@
         <div class="col-sm-2"></div>
         <label class="col-sm-2 col-form-label">E-mail</label>
         <div class="col-sm-5">
-            <input type="email" class="form-control" placeholder="Entrez votre addrèsse Email"
+            <input type="email"[value]="ticket.email" class="form-control" placeholder="Entrez votre addrèsse Email"
             [(ngModel)]="ticket.email" 
             name="email"
             required
@@ -55,22 +55,7 @@
             </div>
         </div>
       </div>
-      <div class="form-group row">
-        <div class="col-sm-2"></div>
-        <label class="col-sm-2 col-form-label">Confirmer Email</label>
-        <div class="col-sm-5">
-            <input type="email" class="form-control" placeholder="confirmer votre addrèsse Email"
-            [(ngModel)]="ticket.confirmEmail"
-            name="confirmEmail"
-            required
-            #confirmEmailVar="ngModel"
-            
-             >
-             <span class="text-danger" *ngIf="checkPass">
-              Les emails doivent être similaires
-            </span>
-        </div>
-      </div>
+     
       <div class="form-group row">
         <div class="col-sm-2"></div>
         <label class="col-sm-2 col-form-label">Entreprise</label>
@@ -117,8 +102,8 @@
         <label class="col-sm-2 col-form-label">telephone</label>
         <div class="col-sm-5">
             <input type="text" class="form-control" placeholder="Entrez le telephone"
-            [(ngModel)]="ticket.tel" 
-            name="tel"
+            [(ngModel)]="ticket.tel_client" 
+            name="tel_client"
             required
             #telVar="ngModel"
             [ngClass]="{
@@ -170,13 +155,14 @@
             [ngClass]="{
             'is-invalid': contenuVar.touched && !contenuVar.valid
                 }">
-                <div class="invalid-feedback">
+                
+
+          </textarea>
+          <div class="invalid-feedback">
                   <span class="text-danger" *ngIf="contenuVar.errors?.required">
                     Veuillez expliquer votre problème
                   </span>
                 </div>
-
-          </textarea>
         </div>
       </div>
       <!-- <div class="form-group row">
@@ -189,8 +175,8 @@
       </div> -->
 
 
-      <button type="submit" class="btn btn-success btn-lg">Ajouter</button>
-      <button class="btn btn-danger btn-lg">Quitter</button>
+      <button type="submit" class="btn btn-success">Modifier</button>
+      <button class="btn btn-danger">Quitter</button>
   </form>
 
 </div>

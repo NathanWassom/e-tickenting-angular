@@ -13,6 +13,7 @@ import { AddTickectComponent } from './Clients/add-tickect/add-tickect.component
 import { AddTicketPanelComponent } from './Admin/add-ticket-panel/add-ticket-panel.component';
 import { TicketDetailComponent } from './Admin/ticket-detail/ticket-detail.component';
 import { EditUserComponent } from './Admin/edit-user/edit-user.component';
+import { EditTicketComponent } from './Admin/edit-ticket/edit-ticket.component';
 // import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -47,6 +48,10 @@ const routes: Routes = [
       {
         path: 'ticket-detail/:id',
         component: TicketDetailComponent,
+      },
+      {
+        path: 'edit-ticket/:id',
+        component: EditTicketComponent,
       },
 
     ],

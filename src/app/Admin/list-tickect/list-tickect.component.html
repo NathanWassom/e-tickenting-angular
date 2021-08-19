@@ -8,8 +8,9 @@
           <table class="table table-responsive-xl">
             <thead>
               <tr>
-                <!-- <th>ID Ticket</th> -->
+                
                 <!-- <th>&nbsp;</th> -->
+                <th>ID Ticket</th>
                 <th>Email</th>
                 <th>Entrepise</th>
                 <th>Contenu</th>
@@ -18,18 +19,18 @@
               </tr>
             </thead>
 
-            <tbody *ngFor="let ticket of tickets">
+            <tbody >
 
-              <tr>
+              <tr  class="alert" role="alert" *ngFor="let ticket of tickets; let index = index">
                  
-                <!-- <td>
-                  {{ticket.}}
-                </td> -->
                 <td>
-                  {{ticket.email}}
+                  {{index+1}}
                 </td>
                 <td>
-                  {{ticket.entreprise}}
+                  {{ticket.email_client}}
+                </td>
+                <td>
+                  {{ticket.entreprise_client}}
                 </td>
                 <td>
                   {{ticket.contenu}}
@@ -37,12 +38,37 @@
                 <td>
                   {{ticket.titre}}
                 </td>
-                <td>
-                        <!-- <button type="submit" (click)="addTicket()" class="btn btn-success">Ajouter</button> -->
-
-                  <a href="#"><span class="fa fa-edit"></span></a>
+                <div class='action'>
+                  <td>
+                    <a [routerLink]="['/cpanel/edit-ticket', ticket.id]"><span class="fa fa-edit"></span></a>
+                     <button type="button" class="btn btn-link" data-toggle="modal" [attr.data-target]="'#exampleModal' + ticket.id">
+                       <i class="fa fa-close text-danger"></i>
+                     </button>
+                        <!-- Modal -->
                   <a [routerLink]="['/cpanel/ticket-detail', ticket.id]"><span class="fa fa-trash" ></span></a>
+                 <!-- Modal -->
+                 <div class="modal fade" id="exampleModal{{ ticket.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                 <div class="modal-dialog">
+                   <div class="modal-content">
+                     <div class="modal-header">
+                       <h5 class="modal-title" id="exampleModalLabel">Confirmer la suppression</h5>
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                       </button>
+                     </div>
+                     <div class="modal-body">
+                       Êtes-vous sûr de vouloir effectuer cette action?
+                     </div>
+                     <div class="modal-footer">
+                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Nom</button>
+                       <button type="button" class="btn btn-primary"  (click)="delete(ticket.id)">Oui</button>
+                     </div>
+                   </div>
+                 </div>
+                 </div>
                 </td>
+              </div>
               </tr>
                 
                   
