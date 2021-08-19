@@ -59,4 +59,11 @@ export class UserService {
         role,
       });
   }
+
+  updatePassword(id: number, password: string): Observable<any> {
+    return this.http
+      .put(`${environment.apiDomain}/users/${id}`, {
+        password
+      });
+  }
 }

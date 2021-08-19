@@ -16,7 +16,7 @@ const httpOptions = {
 export class TicketService {
   // private apiURL: string = 'http://localhost:8000/api0';
 
-  
+
   tickets: Tickets[] | undefined;
 
   constructor(private http: HttpClient) {
@@ -28,11 +28,11 @@ export class TicketService {
   }
   public getOneTicket(id:number): Observable<Tickets> {
     return this.http.get<Tickets>(environment.apiDomain+'/tickets/'+id);
-    
+
   }
 
   public ajouterTicket(
-      nom: string, 
+      nom: string,
       entreprise :string,
       email:string ,
       categorie_id: number,
@@ -42,7 +42,7 @@ export class TicketService {
   ): Observable<Tickets>{
     
     return this.http.post<Tickets>(environment.apiDomain+'/tickets',{
-      nom, 
+      nom,
       entreprise,
       email,
       categorie_id,
@@ -50,7 +50,7 @@ export class TicketService {
       titre,
       tel,
     } ).pipe(tap(t => console.log(t))  )
-  } 
+  }
 
   supprimerTicket(id : number) {
       const url = `${environment.apiDomain+'/tickets'}/${id}`;
