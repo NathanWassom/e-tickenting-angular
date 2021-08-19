@@ -25,26 +25,18 @@ export class TicketService {
   }
   
   public getOneTicket(id:number): Observable<Tickets> {
-<<<<<<< HEAD
     return this.http.get<Tickets>(`${environment.apiDomain}/tickets/${id}`)
     .pipe(
       tap((t) => console.log(t))
       );
     
-=======
-    return this.http.get<Tickets>(environment.apiDomain+'/tickets/'+id);
 
->>>>>>> faa56bfc5d32ce0db82bfb6de558da69e1743c04
   }
 
   
   public ajouterTicket(
-<<<<<<< HEAD
 
-      nom: string, 
-=======
       nom: string,
->>>>>>> faa56bfc5d32ce0db82bfb6de558da69e1743c04
       entreprise :string,
       email:string ,
       categorie_id: number,
