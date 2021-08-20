@@ -21,6 +21,7 @@ import { AuthInterceptor } from './service/authentication/auth.interceptor';
 import { TicketDetailComponent } from './Admin/ticket-detail/ticket-detail.component';
 import { EditUserComponent } from './Admin/edit-user/edit-user.component';
 import { EditTicketComponent } from './Admin/edit-ticket/edit-ticket.component';
+import { FilterPipe } from './Pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { EditTicketComponent } from './Admin/edit-ticket/edit-ticket.component';
     TicketDetailComponent,
     EditUserComponent,
     EditTicketComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
