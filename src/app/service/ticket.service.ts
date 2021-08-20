@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Tickets } from '../Admin/list-tickect/ticket';
 
@@ -18,11 +18,27 @@ export class TicketService {
 
 
   tickets: Tickets[] | undefined;
+  newTicket: Tickets[] | undefined;
 
 
   public getAllTickets(): Observable<any[]> {
-    return this.http.get<any[]>(environment.apiDomain+'/tickets');
+    return this.http.get<any[]>(environment.apiDomain+'/tickets')
   }
+
+
+
+  public newTickets(): Observable<any[]> {
+    return this.http.get<any[]>(environment.apiDomain+'/tickets').pipe(
+      tap((t) => console.log(t)),
+      map((t) => {
+        const newTicket = t.filter((x) => x.statut === 0);
+        return newTicket;
+      })
+    );
+  }
+
+
+
 
   public getOneTicket(id:number): Observable<Tickets> {
     return this.http.get<Tickets>(`${environment.apiDomain}/tickets/${id}`)
@@ -82,4 +98,6 @@ export class TicketService {
   delete(id: number| undefined): Observable<any> {
     return this.http.put(`${environment.apiDomain}/tickets/${id}/delete`, {id});
   }
+
+  
 }

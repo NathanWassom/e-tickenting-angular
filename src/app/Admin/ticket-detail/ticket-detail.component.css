@@ -4,6 +4,38 @@
  .u-section-1 .u-sheet-1 {
     min-height: 889px;
   }
+  .badge-success {
+    color: #ffffff;
+    background-color: #28a745;
+    width: 120px;
+    height: 30px;
+    font-size:20px;
+    margin-top:10px;
+  }
+  .badge-primary {
+    color: #ffffff;
+    background-color: blue;
+    width: 120px;
+    height: 30px;
+    font-size:20px;
+    margin-top:10px;
+  }
+  .badge-warning {
+    color: #ffffff;
+    background-color:orange;
+    width: 120px;
+    height: 30px;
+    font-size:20px;
+    margin-top:10px;
+  }
+  .badge-danger {
+    color: #ffffff;
+    background-color:red;
+    width: 130px;
+    height: 25px;
+    font-size:25px;
+    margin-top:10px;
+  }
 
   .u-section-1 .u-btn-1 {
     background-image: none;
@@ -44,7 +76,7 @@
   .u-section-1 .u-group-1 {
     width: 528px;
     height: auto;
-    min-height: 351px;
+    min-height: 381px;
     margin: -51px auto 0 612px;
   }
 
@@ -9088,6 +9120,8 @@
     position: relative;
     flex: 1;
     max-width: 100%;
+    font-size:30px;
+    font-weight: bold;
   }
   .u-inner-container-layout,
   .u-container-layout > * {
@@ -35029,7 +35063,7 @@
           }
           p:not(.u-text-variant)
           {
-          margin-top: 20px;
+          margin-top: 10px;
           margin-bottom: 20px;
           }
           .u-btn
@@ -35044,6 +35078,7 @@
           border-width: 4px;
           margin-top: 20px;
           margin-bottom: 20px;
+
           }
           .u-metadata
           {

@@ -30,13 +30,7 @@ export class EditTicketComponent implements OnInit {
       next: (ticket) => (this.ticket = ticket),
     });
   }
-  
-  getStatut(data:NgForm){
-    if(data.value){
-      this.ticketService
-        
-    }
-  }
+
 
   public onUpdate(data: NgForm) {
       if (data.valid) {

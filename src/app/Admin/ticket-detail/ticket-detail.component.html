@@ -1,7 +1,30 @@
 <div class="container" >
     <section class="u-clearfix u-section-1" id="sec-6359">
     <div class="u-clearfix u-sheet u-sheet-1">
-      <span class="u-border-none u-btn u-btn-round u-button-style u-custom-color-3 u-radius-4 u-text-body-alt-color u-btn-1" data-animation-name="bounceIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction="">Ré<span class="u-text-black"></span>solu
+     
+       <span
+       data-animation-name="bounceIn" 
+       data-animation-duration="1000" 
+       data-animation-delay="0"
+        data-animation-direction=""
+       class="badge badge-{{ 
+                            
+        (ticket.statut == -1) ? 'danger' 
+       :(ticket.statut == 1) ? 'success' 
+       :(ticket.statut == 2) ? 'warning' 
+       :'primary'
+          
+      
+      }}">{{ 
+        
+        (ticket.statut == -1) ? 'Non Résolu' 
+       :(ticket.statut == 1) ? 'Résolu' 
+       :(ticket.statut == 2) ? 'En Cours' 
+       :'Nouveau'
+          
+      
+      }} 
+   
       </span>
       <blockquote class="u-border-6 u-border-black u-indent-18 u-text u-text-1">{{ticket.titre}}</blockquote>
       <span class="u-btn u-btn-round u-button-style u-gradient u-none u-radius-4 u-text-body-alt-color u-btn-2">description</span>
