@@ -13,11 +13,11 @@ export class TicketDetailComponent implements OnInit {
 
   constructor(private ticketService: TicketService, private route: ActivatedRoute) {}
 
-  
+
   ngOnInit(): void {
     // get id in param url
     const id:number = +this.route.snapshot.paramMap.get('id')!;
-    
+
     this.ticketService.getOneTicket(id).subscribe({
       next: (ticket) => {
         console.log(ticket)

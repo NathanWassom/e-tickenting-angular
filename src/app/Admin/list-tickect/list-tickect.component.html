@@ -1,6 +1,20 @@
 <section class="ftco-section">
+  <div class="container-fluid">
+    <a routerLink="/cpanel/add-ticket-panel" class="btn btn-info">
+      <i class="fa fa-plus"></i>&emsp; Ajouter un ticket
+    </a>
+    <hr>
+  </div>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/cpanel/dashboard"><i class="fa fa-home"></i></a></li>
+      <li class="breadcrumb-item active" aria-current="page">Lister les tickets</li>
+    </ol>
+  </nav>
+
   <div class="container">
-        <h3 class="col-md-12 col-lg-12"><b class="text-primary">GESTION DES TICKETS</b></h3>
+        <!-- <h3 class="col-md-12 col-lg-12"><b class="text-primary">GESTION DES TICKETS</b></h3> -->
     <div class="row">
       <div class="col-md-12">
         <nav>
@@ -8,11 +22,11 @@
             <a class="nav-item nav-link active" id="nav-tous-tab" data-toggle="tab" href="#nav-tous" role="tab"
               aria-controls="nav-tous" aria-selected="true">Tous</a>
               <a class="nav-item nav-link" id="nav-non-resolu-tab" data-toggle="tab" href="#nav-en-cour" role="tab"
-              aria-controls="nav-non-resolu" aria-selected="false">En Cours</a>
+              aria-controls="nav-non-resolu" aria-selected="false">Nouveaux</a>
             <a class="nav-item nav-link" id="nav-resolu-tab" data-toggle="tab" href="#nav-resolu" role="tab"
-              aria-controls="nav-resolu" aria-selected="false">Résolus</a>
+              aria-controls="nav-resolu" aria-selected="false">En cours</a>
             <a class="nav-item nav-link" id="nav-non-resolu-tab" data-toggle="tab" href="#nav-non-resolu" role="tab"
-              aria-controls="nav-non-resolu" aria-selected="false">Non résolu</a>
+              aria-controls="nav-non-resolu" aria-selected="false">Clôturés</a>
           </div>
         </nav>
 
@@ -20,12 +34,12 @@
           <div class="tab-pane fade show active" id="nav-tous" role="tabpanel" aria-labelledby="nav-tous-tab">
             <div class="row">
               <div class="col-md-15">
-                <div class="table-wrap">
+                <div class="">
                   <table class="table table-responsive-xl">
                     <thead>
                       <tr>
 
-                        <th>ID Ticket</th>
+                        <th>ID</th>
                         <th>&nbsp;</th>
                         <th>Email</th>
                         <th>Entrepise</th>
@@ -44,7 +58,7 @@
                         </td>
                         <td>
                           <label class="checkbox-wrap checkbox-primary">
-                            <input type="checkbox" checked>
+                            <input type="checkbox" >
                             <span class="checkmark"></span>
                           </label>
                         </td>
@@ -58,23 +72,23 @@
                           {{ticket.titre}}
                         </td>
                         <td>
-                          <span class="badge badge-{{ 
-                            
-                            (ticket.statut == -1) ? 'danger' 
-                           :(ticket.statut == 1) ? 'success' 
-                           :(ticket.statut == 2) ? 'warning' 
+                          <span class="badge badge-{{
+
+                            (ticket.statut == -1) ? 'danger'
+                           :(ticket.statut == 1) ? 'warning'
+                           :(ticket.statut == 2) ? 'success'
                            :'primary'
-                              
-                          
+
+
                           }}">
-                            {{ 
-                            
-                            (ticket.statut == -1) ? 'Non Résolu' 
-                           :(ticket.statut == 1) ? 'Résolu' 
-                           :(ticket.statut == 2) ? 'En Cours' 
+                            {{
+
+                            (ticket.statut == -1) ? 'Rejeté'
+                           :(ticket.statut == 1) ? 'En cours'
+                           :(ticket.statut == 2) ? 'Résolu'
                            :'Nouveau'
-                              
-                          
+
+
                           }}</span>
                         </td>
                         <div class='action'>
@@ -85,7 +99,7 @@
                               <i class="fa fa-close text-danger"></i>
                             </button>
                             <!-- Modal -->
-                            <a [routerLink]="['/cpanel/ticket-detail', ticket.id]"><span class="fa fa-list-alt"></span></a>
+                            <a class="text text-warning" [routerLink]="['/cpanel/ticket-detail', ticket.id]"><span class="fa fa-list-alt"></span></a>
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal{{ ticket.id }}" tabindex="-1"
                               aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -94,15 +108,15 @@
                                   <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Confirmer la suppression</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
+                                      <span class="text text-secondary" aria-hidden="true" style="font-size: 25px;">&times;</span>
                                     </button>
                                   </div>
                                   <div class="modal-body">
                                     Êtes-vous sûr de vouloir effectuer cette action?
                                   </div>
                                   <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Nom</button>
-                                    <button type="button" class="btn btn-primary" (click)="delete(ticket.id)">Oui</button>
+                                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Non</button>
+                                    <button type="button" class="btn btn-outline-primary" (click)="delete(ticket.id)">Oui</button>
                                   </div>
                                 </div>
                               </div>
@@ -121,12 +135,11 @@
           <div class="tab-pane fade" id="nav-en-cour" role="tabpanel" aria-labelledby="nav-en-cour">
             <div class="row">
               <div class="col-md-12">
-                <div class="table-wrap">
+                <div class="">
                   <table class="table table-responsive-xl">
                     <thead>
                       <tr>
-
-                        <th>ID Ticket</th>
+                        <th>ID</th>
                         <th>&nbsp;</th>
                         <th>Email</th>
                         <th>Entrepise</th>
@@ -145,14 +158,14 @@
                         </td>
                         <td>
                           <label class="checkbox-wrap checkbox-primary">
-                            <input type="checkbox" checked>
+                            <input type="checkbox" >
                             <span class="checkmark"></span>
                           </label>
                         </td>
                         <td>
                           {{ticket.email_client}}
                         </td>
-                        
+
                         <td>
                           {{ticket.entreprise_client}}
                         </td>
@@ -160,7 +173,7 @@
                           {{ticket.titre}}
                         </td>
                         <td>
-                          <span class="badge badge-warning">En cour</span>
+                          <span class="badge badge-primary">Nouveau</span>
                         </td>
                         <div class='action'>
                           <td>
@@ -170,7 +183,7 @@
                               <i class="fa fa-close text-danger"></i>
                             </button>
                             <!-- Modal -->
-                            <a [routerLink]="['/cpanel/ticket-detail', ticket.id]"><span class="fa fa-list-alt"></span></a>
+                            <a class="text text-warning" [routerLink]="['/cpanel/ticket-detail', ticket.id]"><span class="fa fa-list-alt"></span></a>
                             <!-- Modal -->
                             <div class="modal fade" id="EnCoursModal{{ ticket.id }}" tabindex="-1"
                               aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -179,15 +192,15 @@
                                   <div class="modal-header">
                                     <h5 class="modal-title" >Confirmer la suppression</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
+                                      <span class="text text-secondary" aria-hidden="true" style="font-size: 25px;">&times;</span>
                                     </button>
                                   </div>
                                   <div class="modal-body">
                                     Êtes-vous sûr de vouloir effectuer cette action?
                                   </div>
                                   <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Nom</button>
-                                    <button type="button" class="btn btn-primary" (click)="delete(ticket.id)">Oui</button>
+                                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Non</button>
+                                    <button type="button" class="btn btn-outline-primary" (click)="delete(ticket.id)">Oui</button>
                                   </div>
                                 </div>
                               </div>
@@ -206,13 +219,13 @@
           <div class="tab-pane fade" id="nav-resolu" role="tabpanel" aria-labelledby="nav-resolu-tab">
             <div class="row">
               <div class="col-md-12">
-                <div class="table-wrap">
+                <div class="">
                   <table class="table table-responsive-xl">
                     <thead>
                       <tr>
 
-                       
-                        <th>ID Ticket</th>
+
+                        <th>ID</th>
                         <th>&nbsp;</th>
                         <th>Email</th>
                         <th>Entrepise</th>
@@ -224,15 +237,15 @@
 
                     <tbody>
 
-                      <tr class="alert" role="alert" *ngFor="let ticket of resolveTicket; let index = index">
+                      <tr class="alert" role="alert" *ngFor="let ticket of ticketEnCours; let index = index">
 
-                       
+
                         <td>
                           {{index+1}}
                         </td>
                         <td>
                           <label class="checkbox-wrap checkbox-primary">
-                            <input type="checkbox" checked>
+                            <input type="checkbox" >
                             <span class="checkmark"></span>
                           </label>
                         </td>
@@ -246,7 +259,7 @@
                           {{ticket.titre}}
                         </td>
                         <td>
-                          <span class="badge badge-success">Résolu</span>
+                          <span class="badge badge-warning">En cours</span>
                         </td>
                         <div class='action'>
                           <td>
@@ -256,7 +269,7 @@
                               <i class="fa fa-close text-danger"></i>
                             </button>
                             <!-- Modal -->
-                            <a [routerLink]="['/cpanel/ticket-detail', ticket.id]"><span class="fa fa-list-alt"></span></a>
+                            <a class="text text-warning" [routerLink]="['/cpanel/ticket-detail', ticket.id]"><span class="fa fa-list-alt"></span></a>
                             <!-- Modal -->
                             <div class="modal fade" id="ResoluModal{{ ticket.id }}" tabindex="-1"
                               aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -265,15 +278,15 @@
                                   <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Confirmer la suppression</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
+                                      <span class="text text-secondary" aria-hidden="true" style="font-size: 25px;">&times;</span>
                                     </button>
                                   </div>
                                   <div class="modal-body">
                                     Êtes-vous sûr de vouloir effectuer cette action?
                                   </div>
                                   <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Nom</button>
-                                    <button type="button" class="btn btn-primary" (click)="delete(ticket.id)">Oui</button>
+                                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Non</button>
+                                    <button type="button" class="btn btn-outline-primary" (click)="delete(ticket.id)">Oui</button>
                                   </div>
                                 </div>
                               </div>
@@ -297,7 +310,7 @@
                     <thead>
                       <tr>
 
-                        <th>ID Ticket</th>
+                        <th>ID</th>
                         <th>&nbsp;</th>
                         <th>Email</th>
                         <th>Entrepise</th>
@@ -309,14 +322,14 @@
 
                     <tbody>
 
-                      <tr class="alert" role="alert" *ngFor="let ticket of NotResolve; let index = index">
+                      <tr class="alert" role="alert" *ngFor="let ticket of endedTicket; let index = index">
 
                         <td>
                           {{index+1}}
                         </td>
                         <td>
                           <label class="checkbox-wrap checkbox-primary">
-                            <input type="checkbox" checked>
+                            <input type="checkbox" >
                             <span class="checkmark"></span>
                           </label>
                         </td>
@@ -330,7 +343,15 @@
                           {{ticket.titre}}
                         </td>
                         <td>
-                          <span class="badge badge-danger">Non Résolu</span>
+                          <span class="badge badge-{{
+                            (ticket.statut == -1) ? 'danger'
+                           : 'success'
+                           }}">{{
+
+                          (ticket.statut == -1) ? 'Rejeté'
+                          : 'Résolu'
+
+                          }}</span>
                         </td>
                         <div class='action'>
                           <td>
@@ -340,7 +361,7 @@
                               <i class="fa fa-close text-danger"></i>
                             </button>
                             <!-- Modal -->
-                            <a [routerLink]="['/cpanel/ticket-detail', ticket.id]"><span class="fa fa-list-alt"></span></a>
+                            <a class="text text-warning" [routerLink]="['/cpanel/ticket-detail', ticket.id]"><span class="fa fa-list-alt"></span></a>
                             <!-- Modal -->
                             <div class="modal fade" id="NonResoluModal{{ ticket.id }}" tabindex="-1"
                               aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -349,15 +370,15 @@
                                   <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Confirmer la suppression</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
+                                      <span class="text text-secondary" aria-hidden="true" style="font-size: 25px;">&times;</span>
                                     </button>
                                   </div>
                                   <div class="modal-body">
                                     Êtes-vous sûr de vouloir effectuer cette action?
                                   </div>
                                   <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
-                                    <button type="button" class="btn btn-primary" (click)="delete(ticket.id)">Oui</button>
+                                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Non</button>
+                                    <button type="button" class="btn btn-outline-primary" (click)="delete(ticket.id)">Oui</button>
                                   </div>
                                 </div>
                               </div>

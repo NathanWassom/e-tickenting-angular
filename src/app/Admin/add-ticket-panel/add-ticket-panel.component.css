@@ -1,3 +1,7 @@
+.container-fluid{
+  margin-left: 10%;
+}
+
 h3{
     padding-top: 30px;
     padding-bottom: 30px;
@@ -12,14 +16,14 @@ h3{
     outline: none;
   }
   button{
-  
+
   margin: 20px;
   }
-  .btn-success{
+  .btn-outline-secondary{
      margin-left: 30%;
   }
   /* #inAction{
-  
+
   } */
   .nav-link:hover{
     border-bottom: 2px solid rgb(11, 137, 240);
