@@ -1,5 +1,6 @@
 .ftco-section{
     margin-left: 20%;
+    margin-top: -100px;
   }
  :root {
    --blue: #007bff;
@@ -444,11 +445,13 @@
    overflow-y: scroll; }
  
  .container {
+   margin-bottom: 100px;
    width: 100%;
    padding-right: 15px;
    padding-left: 15px;
    margin-right: auto;
-   margin-left: auto; }
+   margin-left: auto;
+   }
    @media (min-width: 576px) {
      .container {
        max-width: 540px; } }
