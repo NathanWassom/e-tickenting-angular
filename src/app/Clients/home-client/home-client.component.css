@@ -1,0 +1,26 @@
+body{
+    background-image: url("../../../../src/assets/images/e-ticketing-log.jpg");
+    background-size: cover;
+    color: white;
+    text-align: center;
+    padding-top:50%;
+}
+B{
+    padding: 5px;
+    background-color: rgb(34, 177, 76);
+}
+h1{
+        margin-bottom: 3%;
+
+}
+a{
+    color: white;
+}
+a:hover{
+    color: white;
+    text-decoration: none;
+}
+.container{
+    margin-top: -600px;
+    /* margin:auto; */
+}
