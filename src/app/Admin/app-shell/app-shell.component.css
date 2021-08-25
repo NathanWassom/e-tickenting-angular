@@ -1,3 +1,7 @@
 nav {
-  box-shadow: 0 2px 4px -4px #000;
+  box-shadow: 0 2px 4px -4px rgb(116, 116, 116);
+}
+
+.nav-top {
+  background: rgb(116, 116, 116)
 }

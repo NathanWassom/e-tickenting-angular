@@ -14,10 +14,11 @@ import { AddTicketPanelComponent } from './Admin/add-ticket-panel/add-ticket-pan
 import { TicketDetailComponent } from './Admin/ticket-detail/ticket-detail.component';
 import { EditUserComponent } from './Admin/edit-user/edit-user.component';
 import { EditTicketComponent } from './Admin/edit-ticket/edit-ticket.component';
+import { HomeClientComponent } from './Clients/home-client/home-client.component';
 // import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: 'home', component: AddTickectComponent },
+  { path: 'home', component: HomeClientComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'cpanel',
@@ -57,6 +58,7 @@ const routes: Routes = [
     ],
   },
   { path: 'faq', component: FaqComponent },
+  { path: 'add-ticket', component: AddTickectComponent },
   { path: 'a-propos', component: AProposComponent },
   { path: 'sign-in', component: LoginComponent },
   { path: 'error404', component: PageNotFoundComponent },
