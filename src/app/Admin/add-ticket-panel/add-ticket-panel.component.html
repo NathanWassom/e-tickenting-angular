@@ -1,7 +1,10 @@
-<div class="sub-main container-fluid">
-  <div [class]="'alert alert-' + labelColor + ' d-flex justify-content-between'" *ngIf="isInsert || isNotInsert">
-    <span class="align-self-center"> {{ responseText }}</span>
-    <span class="align-self-baseline" (click)="closeLabel()"><i style="cursor: pointer;" class="fa fa-close"></i></span>
+<div class="sub-main container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div [class]="'col-md-8 alert alert-' + labelColor + ' d-flex justify-content-between'" *ngIf="isInsert || isNotInsert">
+      <span class="align-self-center"> {{ responseText }}</span>
+      <span class="align-self-baseline" (click)="closeLabel()"><i style="cursor: pointer;" class="text text-secondary fa fa-close"></i></span>
+    </div>
   </div>
   <form novalidate (ngSubmit)="addTicket(data)" #data="ngForm">
       <div class="form-group row">
@@ -180,9 +183,26 @@
         </div>
       </div> -->
 
+      <div class="form-group row">
+        <div class="col-sm-2"></div>
+        <label class="col-sm-2 col-form-label">Pièce jointe</label>
+        <div class="col-sm-5">
+          <div class="custom-file">
+            <input
+              type="file"
+              class="custom-file-input"
+              id="customFile"
+            (change)="upload($event)"
+            >
+            <label class="custom-file-label" for="customFile">Choisir un fichier</label>
+          </div>
+        </div>
+      </div>
+
 
       <button class="btn btn-outline-secondary">Quitter</button>
       <button type="submit" class="btn btn-info">Enregistrer</button>
 
   </form>
 </div>
+

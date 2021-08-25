@@ -23,8 +23,8 @@ export class Tickets extends Client{
   public nom_client? : string;
   public categorie: string | undefined;
   public confirmEmail?: string;
-  
+
   public statut?: number;
-  // public PiecesJointes: string | undefined;
+  public piece_jointe?: string | undefined;
 
 }

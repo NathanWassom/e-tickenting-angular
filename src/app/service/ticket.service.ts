@@ -45,11 +45,11 @@ export class TicketService {
     .pipe(
       tap((t) => console.log(t))
       );
-    
+
 
   }
 
-  
+
   public ajouterTicket(
 
       nom: string,
@@ -84,7 +84,7 @@ export class TicketService {
       tel: string,
       categorie_id:string
   ): Observable<any> {
-    return this.http
+      return this.http
       .put(`${environment.apiDomain}/tickets/${id}`, {
       nom,
       entreprise,
@@ -95,9 +95,11 @@ export class TicketService {
       categorie_id
       });
   }
+
+
   delete(id: number| undefined): Observable<any> {
     return this.http.put(`${environment.apiDomain}/tickets/${id}/delete`, {id});
   }
 
-  
+
 }
