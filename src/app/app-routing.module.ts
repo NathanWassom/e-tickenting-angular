@@ -2,7 +2,7 @@ import { AProposComponent } from './Admin/a-propos/a-propos.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './Admin/login/login.component';
 import { ListTickectComponent } from './Admin/list-tickect/list-tickect.component';
-import { FaqComponent } from './faq/faq.component';
+import { FaqComponent } from './Clients/faq/faq.component';
 import { GesUsersComponent } from './Admin/ges-users/ges-users.component';
 import { AddUserComponent } from './Admin/add-user/add-user.component';
 import { HomeComponent } from './home/home.component';
