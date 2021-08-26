@@ -1,18 +1,18 @@
 <header>
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-    <div class="container"> 
-      
+    <div class="container">
+
       <img src="../../../assets/img/logo GAC.png" id="logo">
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="fa fa-bars"></span> Menu
       </button>
- 
+
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active"><a href="add-ticket" class="nav-link">Home</a></li>
-          
-          <li class="nav-item"><a href="#" class="nav-link">FAQ</a></li>
+          <li class="nav-item" routerLinkActive="active"><a routerLink="/add-ticket" class="nav-link">Home</a></li>
+
+          <li class="nav-item" routerLinkActive="active"><a routerLink="/faq" class="nav-link">FAQ</a></li>
         </ul>
       </div>
     </div>
@@ -75,7 +75,7 @@
       <div class="col-sm-2"></div>
       <label class="col-sm-1 col-form-label">E-mail<span class="etoile">*</span></label>
       <div class="col-sm-5">
-          <input type="email" class="form-control" placeholder="Entrez votre addrèsse Email"
+          <input type="email" class="form-control" placeholder="Entrez votre Email"
           [(ngModel)]="ticket.email"
           name="email"
           required
@@ -94,7 +94,7 @@
           </div>
       </div>
     </div>
-    
+
     <div class="form-group row">
       <div class="col-sm-2"></div>
       <label class="col-sm-1 col-form-label">Entreprise<span class="etoile">*</span></label>
@@ -116,7 +116,7 @@
 
       </div>
     </div>
-   
+
     <div class="form-group row">
       <div class="col-sm-2"></div>
       <label class="col-sm-1 col-form-label">Téléphone</label>
@@ -157,10 +157,7 @@
                 </span>
               </div>
 
-              <option value="1">1</option>
-              <option lvaue="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
+              <option *ngFor="let cat of categories" value="{{ cat.id }}">{{ cat.nom }}</option>
           </select>
       </div>
     </div>
@@ -185,14 +182,16 @@
         </textarea>
       </div>
     </div>
-    <!-- <div class="form-group row">
+    <div class="form-group row">
       <div class="col-sm-2"></div>
-      <label class="col-sm-2 col-form-label">Pieces Jointes</label>
+      <label class="col-sm-1 col-form-label">Pieces Jointes</label>
       <div class="col-sm-5">
-          <input type="file" class="form-control-file"
-          [(ngModel)]="ticket.PiecesJointes" name="PiecesJointes">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="customFile" (change)="upload($event)">
+            <label class="custom-file-label" for="customFile">Choisir un fichier</label>
+          </div>
       </div>
-    </div> -->
+    </div>
 
 
     <button class="btn btn-outline-secondary">Quitter</button>
@@ -215,8 +214,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-sm-6 col-xs-12">
-        <p class="copyright-text">Copyright &copy; 2021 Global Asset Cameroon All Rights Reserved by 
-     <a href="#">Scanfcode</a>.
+        <p class="copyright-text">&copy; Copyright 2021. All Rights Reserved by <a href="https://globalassetcameroon.net">Global Asset Cameroon</a>.
         </p>
       </div>
 
@@ -224,7 +222,7 @@
         <ul class="social-icons">
           <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
           <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-          <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
+          <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
         </ul>
       </div>
     </div>

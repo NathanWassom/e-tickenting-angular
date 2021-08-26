@@ -13,8 +13,8 @@ import { Tickets } from '../list-tickect/ticket';
 })
 export class AddTicketPanelComponent implements OnInit {
 
-ticket = new Tickets();
-checkPass: boolean = false;
+  ticket = new Tickets();
+  checkPass: boolean = false;
   isInsert: boolean = false;
   isNotInsert: boolean = false;
   responseText!: string;

@@ -1,79 +1,90 @@
+import { Category } from './../../model/category';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Tickets } from 'src/app/Admin/list-tickect/ticket';
 import { TicketService } from 'src/app/service/ticket.service';
+import { CategoryService } from 'src/app/service/category.service';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-tickect',
   templateUrl: '../add-tickect/add-tickect.component.html',
-  styleUrls: ['../add-tickect/add-tickect.component.css']
+  styleUrls: ['../add-tickect/add-tickect.component.css'],
 })
 export class AddTickectComponent implements OnInit {
-
   ticket = new Tickets();
-checkPass: boolean = false;
+  checkPass: boolean = false;
   isInsert: boolean = false;
   isNotInsert: boolean = false;
   responseText!: string;
   labelColor!: string;
 
+  categories!: Category[];
 
   public newTicket: Tickets = new Tickets();
 
-
-
-  constructor(private ticketService : TicketService, 
-    private router:Router) { }
-
+  constructor(
+    private ticketService: TicketService,
+    private router: Router,
+    private _catService: CategoryService,
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
-  }
-
-  public addTicket(data :NgForm){
-    if (data.value.confirmEmail === data.value.email) {
-      if (data.valid) {
-     this.ticketService
-     .ajouterTicket(
-       data.value.nom, 
-       data.value.entreprise,
-       data.value.email,
-       data.value.categorie_id,
-       data.value.contenu,
-       data.value.titre,
-       data.value.tel,
-       )
-    .subscribe({
-      
-      next: () => {
-        this.isInsert = true;
-        this.responseText = 'Ticket crée avec success!';
-        this.labelColor = 'success';
-        data.reset({
-          nom: '',
-          email: '',
-          contenu: '',
-          tel: '',
-      
+    this._catService.getCategories().subscribe({
+      next: (cat) => (this.categories = cat),
     });
-  }, error: () => {
-    this.isNotInsert = true;
-    this.responseText = 'Une erreur est survenue lors de la création du ticket!';
-    this.labelColor = 'danger';
-  },
-});
-}
-} else {
-  this.checkPass = true;
-}
-}
-
-closeLabel() {
-this.isInsert = false;
-}
-    
-    // console.log("valeurs: ", JSON.stringify(data.value));
-
   }
-  
+
+  upload(event: HTMLInputElement | any) {
+    const file = event.target.files[0];
+    this.ticket.piece_jointe = file;
+  }
+
+  public addTicket(data: NgForm) {
+      if (data.valid) {
+
+        var formData: any = new FormData();
+        formData.append('piece_jointe', this.ticket.piece_jointe);
+        formData.append('nom', data.value.nom);
+        formData.append('entreprise', data.value.entreprise);
+        formData.append('email', data.value.email);
+        formData.append('categorie_id', data.value.categorie_id);
+        formData.append('contenu', data.value.contenu);
+        formData.append('titre', data.value.titre);
+        formData.append('tel', data.value.tel);
+
+        this.http.post(environment.apiDomain + '/tickets', formData).subscribe({
+          next: () => {
+            this.isInsert = true;
+            this.responseText = 'Ticket crée avec success!';
+            this.labelColor = 'success';
+            data.reset({
+              nom: '',
+              email: '',
+              contenu: '',
+              tel: '',
+            });
+          },
+          error: () => {
+            this.isNotInsert = true;
+            this.responseText =
+              'Une erreur est survenue lors de la création du ticket!';
+            this.labelColor = 'danger';
+          },
+        });
+
+
+      }
+  }
+
+  closeLabel() {
+    this.isInsert = false;
+  }
+
+  // console.log("valeurs: ", JSON.stringify(data.value));
+}
+
 
