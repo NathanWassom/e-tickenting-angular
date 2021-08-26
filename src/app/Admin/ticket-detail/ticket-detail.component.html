@@ -1,81 +1,170 @@
-<div class="container" >
-    <section class="u-clearfix u-section-1" id="sec-6359">
-    <div class="u-clearfix u-sheet u-sheet-1">
-     
-       <span
-       data-animation-name="bounceIn" 
-       data-animation-duration="1000" 
-       data-animation-delay="0"
-        data-animation-direction=""
-       class="badge badge-{{ 
-                            
-        (ticket.statut == -1) ? 'danger' 
-       :(ticket.statut == 1) ? 'success' 
-       :(ticket.statut == 2) ? 'warning' 
-       :'primary'
-          
+<div class="container">
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/cpanel/dashboard"><i class="fa fa-home"></i></a></li>
+      <li class="breadcrumb-item active" aria-current="page">Détail Du Ticket</li>
+    </ol>
+  </nav>
+
+
+  <!-- <h3 class="col-md-12 col-lg-12"><b class="text-primary">GESTION DES TICKETS</b></h3> -->
+<div class="row">
+<div class="col-md-12">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-detail-tab" data-toggle="tab" href="#nav-detail" role="tab"
+        aria-controls="nav-tous" aria-selected="true">Détail</a>
+        <a class="nav-item nav-link" id="nav-intervenant-tab" data-toggle="tab" href="#nav-intervenant" role="tab"
+        aria-controls="nav-non-resolu" aria-selected="false">Intervenants</a>
       
-      }}">{{ 
+    </div>
+  </nav>
+
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-detail" role="tabpanel" aria-labelledby="nav-detail-tab">
+      <div class="row">
+        <div class="col-md-15">
+          <div class="detail">
+            <section class="u-clearfix u-section-1" id="sec-6359">
+              <div class="u-clearfix u-sheet u-sheet-1">
+               
+                 <span
+                 data-animation-name="bounceIn" 
+                 data-animation-duration="1000" 
+                 data-animation-delay="0"
+                  data-animation-direction=""
+                 class="badge badge-{{ 
+                                      
+                  (ticket.statut == -1) ? 'danger' 
+                 :(ticket.statut == 1) ? 'warning' 
+                 :(ticket.statut == 2) ? 'success' 
+                 :'primary'
+                    
+                
+                }}">{{ 
+                  
+                  (ticket.statut == -1) ? 'Rejeté' 
+                 :(ticket.statut == 1) ? 'En cours' 
+                 :(ticket.statut == 2) ? 'Résolu' 
+                 :'Nouveau'
+                    
+                
+                }} 
+                </span>
+
+                <div class="form-row"> 
+                  <div class="form-group col-md-6">
+                  <label>Titre<span class="etoile">*</span> </label>
+                      <input class="titres form-control" 
+                      type="text"  
+                      placeholder="Attribuez un titre à votre problème"
+                      value="{{ticket.titre}}"
+                      name="titre"
+                      disabled="disabled" />
+                </div>
+
+              </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label>Nom Du Client<span class="etoile">*</span></label>
+                  <input  type="text" 
+                  placeholder="Entrez votre nom" 
+                  class=" form-control"
+                  name="nom"
+                  value="{{ticket.nom}}"
+                  disabled="disabled"
+                  >  
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>E-mail<span class="etoile">*</span></label>
+                        <input type="email" 
+                        class="form-control" 
+                        placeholder="Entrez votre addrèsse Email"
+                        name="email"
+                        value="{{ticket.email}}"
+                        disabled="disabled"
+                        >                   
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label class="col-sm-1 col-form-label">Entreprise<span class="etoile">*</span></label>
+                    <input type="text" 
+                    class="form-control" 
+                    placeholder="Entrez votre entreprise"
+                    name="entreprise"
+                    value="{{ticket.entreprise}}"
+                    disabled="disabled"
+                    >
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label class="col-sm-1 col-form-label">Téléphone</label>
+                        <input type="text" class="form-control" 
+                        name="tel"
+                        value="{{ticket.tel}}"
+                        disabled="disabled"
+                        >           
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label class="col-sm-1 col-form-label" >Catégorie<span class="etoile">*</span></label>
+                        <select class="form-control"  
+                        name="categorie_id"
+                        value="{{ticket.categorie}}"
+                        disabled="disabled"
+                            >           
+                          
+                        </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label class="col-sm-5 col-form-label">Sous Traitant </label>
+                        <input type="text" class="form-control" 
+                        name="sous_traitant"
+                        value="{{ticket.nom_client}}"
+                        disabled="disabled"
+                        >        
+                  </div>
+                </div>
+          
+                <div class="form-group row">
+                <label class="col-sm-1 col-form-label">Contenu<span class="etoile">*</span></label>
+                    <textarea 
+                    class="form-control" rows="5" cols="20"
+                    name="contenu"
+                    value="{{ticket.contenu}}"
+                    disabled="disabled"
+                    >
+                    </textarea>
+                </div>
+              </div>
+            </section>
+
+            
+          </div>
+        </div>  
+
+    </div>
+  </div>
         
-        (ticket.statut == -1) ? 'Non Résolu' 
-       :(ticket.statut == 1) ? 'Résolu' 
-       :(ticket.statut == 2) ? 'En Cours' 
-       :'Nouveau'
-          
-      
-      }} 
-   
-      </span>
-      <blockquote class="u-border-6 u-border-black u-indent-18 u-text u-text-1">{{ticket.titre}}</blockquote>
-      <span class="u-btn u-btn-round u-button-style u-gradient u-none u-radius-4 u-text-body-alt-color u-btn-2">description</span>
-      <div class="u-container-style u-expanded-width-xs u-group u-group-1">
-        <div class="u-container-layout u-container-layout-1">
-          <span class="u-btn u-btn-round u-button-style u-gradient u-none u-radius-4 u-text-body-alt-color u-btn-3">autres informations</span>
-          <p class="u-custom-font u-font-playfair-display u-text u-text-10">Nom Du Client:   {{ticket.nom}}<br>
-            <br>Email:  {{ticket.email}} <br>
-            <br>Entreprise:  {{ticket.entreprise}}<br>
-            <br>Sous Traitant:   {{ticket.nom_client}}
-          </p>
-          
-        </div>
-      </div>
-      <p class="u-custom-font u-font-playfair-display u-text u-text-7">{{ticket.contenu}}
-      </p>
-      <span  class class="u-btn u-btn-round u-button-style u-gradient u-none u-radius-4 u-text-body-alt-color u-btn-5">piece jointes</span>
-      <div class="u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-gallery u-layout-grid u-lightbox u-show-text-on-hover u-gallery-1">
-        <div class="u-gallery-inner u-gallery-inner-1">
-          <div class="u-effect-fade u-effect-hover-liftUp u-gallery-item u-radius-1 u-shape-round u-gallery-item-1"  data-target="_blank">
-            <div class="u-back-slide u-back-slide-1" data-image-width="1122" data-image-height="750">
-              <img class="u-back-image u-expanded" src="images/c47273dfc1e501866c9073171076f29a.jpeg">
-            </div>
-            <div class="u-over-slide u-shading u-over-slide-1">
-              <h3 class="u-gallery-heading"></h3>
-              <p class="u-gallery-text"></p>
-            </div>
-          </div>
-          <div class="u-effect-fade u-effect-hover-liftUp u-file-link u-gallery-item u-radius-1 u-shape-round u-gallery-item-2"  data-target="_blank">
-            <div class="u-back-slide u-back-slide-2" data-image-width="1122" data-image-height="750">
-              <img src="images/c47273dfc1e501866c9073171076f29a.jpeg" alt="" data-image-width="2000" data-image-height="1333" class="u-back-image u-expanded">
-            </div>
-            <div class="u-over-slide u-shading u-over-slide-2">
-              <h3 class="u-gallery-heading"></h3>
-              <p class="u-gallery-text"></p>
-            </div>
-          </div>
-          <div class="u-effect-fade u-effect-hover-liftUp u-gallery-item u-radius-1 u-shape-round u-gallery-item-3"  data-target="_blank">
-            <div class="u-back-slide u-back-slide-3" data-image-width="1260" data-image-height="685">
-              <img class="u-back-image u-expanded" src="images/1f64830252571bb5126dccd1378e757a.png">
-            </div>
-            <div class="u-over-slide u-shading u-over-slide-3">
-              <h3 class="u-gallery-heading"></h3>
-              <p class="u-gallery-text"></p>
-            </div>
+    <div class="tab-pane fade" id="nav-intervenant" role="tabpanel" aria-labelledby="nav-intervenant">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="">
+           
+
+
           </div>
         </div>
       </div>
     </div>
-  </section>
-  <section class="u-clearfix u-section-2" id="sec-1b4f">
-    <div class="u-clearfix u-sheet u-sheet-1"></div>
-  </section>
+   
+
+           
+<div class="container" >
+   
+  
 </div>
