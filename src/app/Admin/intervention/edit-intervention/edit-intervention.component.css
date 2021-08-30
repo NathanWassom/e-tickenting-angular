@@ -1,0 +1,33 @@
+.container{
+margin-top:30% ;
+margin-left:-300%;
+}
+.text-muted{
+    margin-left: 30%;
+    font-size: 35px;
+}
+
+#logo{
+    width: 150px;
+    height: 70px;
+    margin: 10px;
+}
+
+button{
+    margin: 20px;
+}
+.sample{
+  padding: 5%;
+}
+footer{
+  background-color: rgba(0, 0, 0, .1);
+  padding: 2.1%;
+}
+.closed{
+  border-right: 1px solid grey;
+  box-shadow: 0 0 0 0ch lightgrey;
+  height: 100%;
+}
+.etoile {
+    color: red;
+  }

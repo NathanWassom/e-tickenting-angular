@@ -15,6 +15,8 @@ import { TicketDetailComponent } from './Admin/ticket-detail/ticket-detail.compo
 import { EditUserComponent } from './Admin/edit-user/edit-user.component';
 import { EditTicketComponent } from './Admin/edit-ticket/edit-ticket.component';
 import { HomeClientComponent } from './Clients/home-client/home-client.component';
+import { EditInterventionComponent } from './Admin/intervention/edit-intervention/edit-intervention.component';
+import { DetailInterventionComponent } from './Admin/intervention/detail-intervention/detail-intervention.component';
 // import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -54,6 +56,15 @@ const routes: Routes = [
         path: 'edit-ticket/:id',
         component: EditTicketComponent,
       },
+      {
+        path:'edit-intervention',
+        component:EditInterventionComponent,
+      },
+      {
+        path:'detail-intervention',
+        component:DetailInterventionComponent,
+      },
+
 
     ],
   },
