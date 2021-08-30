@@ -77,7 +77,7 @@ export class ListTickectComponent implements OnInit {
     return this.ticketService.delete(id).subscribe({
       next: () => {
         console.log('OK');
-        this.router.navigate(['/cpanel/list-tickect']);
+        this.router.navigate(['/cpanel/list-ticket']);
       },
     });
   }

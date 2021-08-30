@@ -15,6 +15,7 @@ import { TicketDetailComponent } from './Admin/ticket-detail/ticket-detail.compo
 import { EditUserComponent } from './Admin/edit-user/edit-user.component';
 import { EditTicketComponent } from './Admin/edit-ticket/edit-ticket.component';
 import { HomeClientComponent } from './Clients/home-client/home-client.component';
+import { VerifiedTokenGuard } from './guards/verified-token.guard';
 // import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'cpanel',
+    canActivate: [VerifiedTokenGuard],
     component: AppShellComponent,
     children: [
       { path: 'dashboard', component: HomeComponent },

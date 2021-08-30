@@ -28,7 +28,7 @@ export class VerifiedTokenGuard implements CanActivate {
     if (token) {
       return true;
     } else {
-      this.router.navigate(['/auth/sign-in']);
+      this.router.navigate(['/sign-in']);
       return false;
     }
   }

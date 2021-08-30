@@ -1,7 +1,9 @@
+import { Intervention } from './../../model/intervention';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TicketService } from 'src/app/service/ticket.service';
 import { Tickets } from '../list-tickect/ticket';
+import { InterventionService } from 'src/app/service/intervention.service';
 
 @Component({
   selector: 'app-ticket-detail',
@@ -10,8 +12,9 @@ import { Tickets } from '../list-tickect/ticket';
 })
 export class TicketDetailComponent implements OnInit {
   ticket!: Tickets;
+  interventions!: any[];
 
-  constructor(private ticketService: TicketService, private route: ActivatedRoute) {}
+  constructor(private ticketService: TicketService, private route: ActivatedRoute, private interventionSrv: InterventionService) {}
 
 
   ngOnInit(): void {
@@ -24,6 +27,13 @@ export class TicketDetailComponent implements OnInit {
         this.ticket = ticket;
       }
     });
+
+    this.interventionSrv.getInterventionsByTcket(1).subscribe({
+      next: (t) => {
+        console.log(t);
+        this.interventions = t;
+      }
+    })
   }
 }
 

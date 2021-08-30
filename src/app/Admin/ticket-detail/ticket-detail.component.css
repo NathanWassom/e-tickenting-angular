@@ -11,7 +11,7 @@
   margin-bottom: 1rem;
   list-style: none;
   background-color: #e9ecef;
-  border-radius: 0.25rem; 
+  border-radius: 0.25rem;
   margin-top: 10px;}
 
 .breadcrumb-item + .breadcrumb-item {
@@ -31,7 +31,7 @@
 .breadcrumb-item.active {
   color: #6c757d; }
 .detail{
-  margin-top:100px;
+  margin-top:110px;
 }
 .titre{
   margin-top: 70px;
@@ -44,7 +44,7 @@
 }
 .nom{
   margin-top: 80px;
-} 
+}
 
 * {
   font-size: 13px;
