@@ -1,1 +1,56 @@
-<p>detail-intervention works!</p>
+ <!-- <h1 class="text-muted"><b>Gestions Des Interventions</b></h1> <hr> -->
+ <div class="container">
+    <form >
+        <div class="form-row">
+          <div class="form-group col-md-4">
+               <label class="col-sm-1 col-form-label">Note<span class="etoile">*</span></label>
+                    <textarea 
+                      class="form-control" 
+                      rows="3" cols="8"
+                      name="note"
+                      disabled="disable">
+                    </textarea>
+          </div>
+        <div class="form-group col-md-4">
+               <label class="col-sm-4 col-form-label" >Sous Traitant<span class="etoile">*</span></label>
+                    <select class="form-control "  
+                      name="categorie_id"
+                      required
+                      disabled="disable">       
+                      <option value="Développeur">Développeur</option>
+                      <option value="Gestionnaire">Gestionnaire</option>    
+                    </select>
+          </div>
+      </div>
+  
+        <div class="form-group">
+                <label class="col-sm-1 col-form-label" >Terminé?<span class="etoile">*</span></label>
+                  <div class="form-check form-check-inline">
+                     <input class="form-check-input" 
+                            type="radio" 
+                            name="inlineRadioOptions" 
+                            id="inlineRadio1" 
+                            value="option1" 
+                            disabled="disable">
+                       <label class="form-check-label" for="inlineRadio1">Oui</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                     <input class="form-check-input" 
+                            type="radio" 
+                            name="inlineRadioOptions" 
+                            id="inlineRadio2" 
+                            value="option2"
+                            disabled="disable">
+                       <label class="form-check-label" for="inlineRadio2">Non</label>
+                   </div>
+          </div>
+            <div class="button">
+              <button routerLink="/cpanel/ges-users" class="btn btn-secondary ">Quitter</button> 
+              <button routerLink="/cpanel/edit-intervention" type="submit" class="btn btn-info">Modifier</button>
+            </div>
+            
+            <div class="espace"></div>
+  
+    </form>
+  </div>
+    

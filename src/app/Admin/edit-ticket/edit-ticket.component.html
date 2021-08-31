@@ -148,6 +148,7 @@
         <label class="col-sm-2 col-form-label">Contenu</label>
         <div class="col-sm-5">
             <textarea placeholder="Dites nous quelque choses" class="form-control"
+            rows="4"
             [(ngModel)]="ticket.contenu" 
             name="contenu"
             #contenuVar="ngModel"
@@ -173,10 +174,11 @@
             [(ngModel)]="ticket.PiecesJointes" name="PiecesJointes">
         </div>
       </div> -->
+      <div class="button">
+        <button class="btn btn-secondary">Quitter</button>
+        <button type="submit" class="btn btn-info">Modifier</button>
+      </div>
 
-
-      <button type="submit" class="btn btn-success">Modifier</button>
-      <button class="btn btn-danger">Quitter</button>
   </form>
 
 </div>

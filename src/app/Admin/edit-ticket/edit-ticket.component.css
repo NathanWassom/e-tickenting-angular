@@ -11,12 +11,12 @@ h3{
   select{
     outline: none;
   }
-  button{
+  .button{
   
-  margin: 20px;
+  margin-left:30%;
   }
   .btn{
-     margin-left: 30%;
+     margin: 5%;
   }
   /* #inAction{
   
