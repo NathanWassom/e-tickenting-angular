@@ -83,13 +83,11 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a routerLink="add-ticket-panel" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
                   <p>Ajouter un Ticket</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a routerLink="list-ticket" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
                   <p> Lister les Tickets</p>
                   <span *ngIf="total !== 0" class="badge badge-info right">{{ total }}</span>
                 </a>
@@ -108,14 +106,12 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a routerLink="add-user" routerLink="add-user" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
                   <p>Ajouter un Utilisateur </p>
                   <!-- <span class="right badge badge-danger">New</span> -->
                 </a>
               </li>
               <li class="nav-item">
-                <a routerLink="ges-users" routerLink="ges-users" class="nav-link">
-                  <i class="fa fa-circle nav-icon" aria-hidden="true"></i>
+                <a routerLink="ges-users" class="nav-link">
                   <p> Lister les Utilisateurs</p>
                 </a>
               </li>
@@ -134,7 +130,7 @@
           </li> -->
           <li class="nav-item pointer">
             <a (click)="onSignOut()" style="cursor: pointer;" class="nav-link">
-              <i class="nav-icon far fa-sign-out"></i>
+              <i class="nav-icon fa fa-sign-out-alt"></i>
               <p>Déconnexion</p>
             </a>
           </li>

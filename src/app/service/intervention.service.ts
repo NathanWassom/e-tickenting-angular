@@ -19,10 +19,10 @@ export class InterventionService {
   }
 
   addIntervention(ticket_id: number, user_id: number, duree: string, note: string, termine: boolean, resolu: string): Observable<Intervention> {
-    var data: boolean = false;
+    var resolve: number = 0;
 
     if (resolu !== '') {
-      data = Boolean(resolu);
+      resolve = Number(resolu);
     }
 
     return this.http.post<Intervention>(
@@ -33,7 +33,7 @@ export class InterventionService {
         duree,
         note,
         termine,
-        data
+        resolve,
       }
     );
   }

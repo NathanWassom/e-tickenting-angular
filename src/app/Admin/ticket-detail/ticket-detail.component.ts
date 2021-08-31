@@ -56,6 +56,8 @@ export class TicketDetailComponent implements OnInit {
     this.intervention.termine = event.target.value;
     if (this.intervention.termine == '1') {
       this.resolveBtnRadio = true;
+    } else {
+      this.resolveBtnRadio = false;
     }
   }
 
