@@ -1,6 +1,7 @@
 .container{
-margin-top:30% ;
-margin-left:-300%;
+  margin-left: 30%;
+  margin-top:7% ;
+/* margin-left:-3*%; */
 }
 .text-muted{
     margin-left: 30%;
@@ -14,20 +15,18 @@ margin-left:-300%;
 }
 
 button{
-    margin: 20px;
+    margin:3%;
 }
+.button{
+  margin-left:20%;
+}
+
 .sample{
   padding: 5%;
 }
-footer{
-  background-color: rgba(0, 0, 0, .1);
-  padding: 2.1%;
-}
-.closed{
-  border-right: 1px solid grey;
-  box-shadow: 0 0 0 0ch lightgrey;
-  height: 100%;
-}
 .etoile {
     color: red;
+  }
+  .espace{
+    margin-top: 20%;
   }

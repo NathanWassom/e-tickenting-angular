@@ -1,0 +1,32 @@
+.container{
+    margin-left: 30%;
+    margin-top:7% ;
+  /* margin-left:-3*%; */
+  }
+  .text-muted{
+      margin-left: 30%;
+      font-size: 35px;
+  }
+  
+  #logo{
+      width: 150px;
+      height: 70px;
+      margin: 10px;
+  }
+  
+  button{
+      margin:3%;
+  }
+  .button{
+    margin-left:20%;
+  }
+  
+  .sample{
+    padding: 5%;
+  }
+  .etoile {
+      color: red;
+    }
+    .espace{
+      margin-top: 20%;
+    }
