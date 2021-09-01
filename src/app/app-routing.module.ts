@@ -18,19 +18,28 @@ import { HomeClientComponent } from './Clients/home-client/home-client.component
 import { VerifiedTokenGuard } from './guards/verified-token.guard';
 import { EditInterventionComponent } from './Admin/intervention/edit-intervention/edit-intervention.component';
 import { DetailInterventionComponent } from './Admin/intervention/detail-intervention/detail-intervention.component';
-// import { AuthGuard } from './guards/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
+import { RoleGuard } from './guards/role.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeClientComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'cpanel',
-    canActivate: [VerifiedTokenGuard],
+    canActivate: [AuthGuard],
     component: AppShellComponent,
     children: [
       { path: 'dashboard', component: HomeComponent },
-      { path: 'add-user', component: AddUserComponent },
-      { path: 'ges-users', component: GesUsersComponent },
+      {
+        path: 'add-user',
+        canActivate: [RoleGuard],
+        component: AddUserComponent,
+      },
+      {
+        path: 'ges-users',
+        canActivate: [RoleGuard],
+        component: GesUsersComponent,
+      },
       { path: 'list-ticket', component: ListTickectComponent },
       { path: 'add-ticket-panel', component: AddTicketPanelComponent },
 
@@ -44,7 +53,7 @@ const routes: Routes = [
       },
       {
         path: 'edit-user/:id',
-        component: EditUserComponent
+        component: EditUserComponent,
       },
       {
         path: 'list-ticket',
@@ -59,15 +68,13 @@ const routes: Routes = [
         component: EditTicketComponent,
       },
       {
-        path:'edit-intervention',
-        component:EditInterventionComponent,
+        path: 'edit-intervention',
+        component: EditInterventionComponent,
       },
       {
-        path:'detail-intervention',
-        component:DetailInterventionComponent,
+        path: 'detail-intervention',
+        component: DetailInterventionComponent,
       },
-
-
     ],
   },
   { path: 'faq', component: FaqComponent },

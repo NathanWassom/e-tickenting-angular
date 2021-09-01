@@ -9,11 +9,15 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class AuthService {
-  isAuth = false;
+  // isAuth = false;
   private apiDomain = environment.apiDomain;
   storageKey = environment.localStorageKey;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
+
+  isLoggedIn() {
+    return !!localStorage.getItem('token');
+  }
 
   singnIn(email: string, password: string): Observable<User | undefined> {
     return this.http
@@ -22,7 +26,7 @@ export class AuthService {
   }
 
   signOut() {
-    this.isAuth = false;
+    // this.isAuth = false;
     localStorage.removeItem(this.storageKey);
     localStorage.removeItem(environment.tokenStorageKey);
   }

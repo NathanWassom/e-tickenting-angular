@@ -16,6 +16,9 @@ export class AppShellComponent implements OnInit {
   username!: string;
   total!: number;
 
+  localData = JSON.parse(localStorage.getItem(environment.localStorageKey)!);
+  role: string = this.localData['role'];
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -41,7 +44,7 @@ export class AppShellComponent implements OnInit {
 
   onSignOut() {
     this.authService.signOut();
-    this.isAuth = this.authService.isAuth;
+    // this.isAuth = this.authService.isAuth;
     this.router.navigate(['/sign-in']);
   }
 }

@@ -1,17 +1,10 @@
-<img src="../../../assets/img/LOGO.png" id="logo">
-<nav class="nav">
-    <a class="nav-link" id="inAction" href="#">Home</a>
-    <a class="nav-link text-muted" href="#">FAQ</a>
-    <a class="nav-link text-muted" href="#">A Propos</a>
 
-</nav>
 <div class="container">
   <div [class]="'alert alert-' + labelColor + ' d-flex justify-content-between'" *ngIf="isInsert || isNotInsert">
     <span class="align-self-center"> {{ responseText }}</span>
     <span class="align-self-baseline" (click)="closeLabel()"><i style="cursor: pointer;" class="fa fa-close"></i></span>
   </div>
-  <form novalidate (ngSubmit)="onUpdate(data)" #data="ngForm"> 
-      <h3 class="col-md-12 col-lg-12">CREER VOS TICKETS, <b class="text-primary">FACILEMENT</b> ET <b class="text-success">RAPIDEMENT</b></h3>
+  <form novalidate (ngSubmit)="onUpdate(data)" #data="ngForm">
       <div class="form-group row">
           <div class="col-sm-2"></div>
         <label class="col-sm-2 col-form-label">Nom</label>
@@ -31,13 +24,13 @@
             </div>
         </div>
       </div>
-      
+
       <div class="form-group row">
         <div class="col-sm-2"></div>
         <label class="col-sm-2 col-form-label">E-mail</label>
         <div class="col-sm-5">
             <input type="email"[value]="ticket.email" class="form-control" placeholder="Entrez votre addrèsse Email"
-            [(ngModel)]="ticket.email" 
+            [(ngModel)]="ticket.email"
             name="email"
             required
             #emailVar="ngModel"
@@ -55,7 +48,7 @@
             </div>
         </div>
       </div>
-     
+
       <div class="form-group row">
         <div class="col-sm-2"></div>
         <label class="col-sm-2 col-form-label">Entreprise</label>
@@ -82,7 +75,7 @@
         <label class="col-sm-2 col-form-label">titre</label>
         <div class="col-sm-5">
             <input type="text" class="form-control" placeholder="Entrez le nom de votre entreprise"
-            [(ngModel)]="ticket.titre" 
+            [(ngModel)]="ticket.titre"
             name="titre"
             required
             #titreVar="ngModel"
@@ -102,7 +95,7 @@
         <label class="col-sm-2 col-form-label">telephone</label>
         <div class="col-sm-5">
             <input type="text" class="form-control" placeholder="Entrez le telephone"
-            [(ngModel)]="ticket.tel_client" 
+            [(ngModel)]="ticket.tel"
             name="tel_client"
             required
             #telVar="ngModel"
@@ -122,7 +115,7 @@
         <div class="col-sm-2"></div>
         <label class="col-sm-2 col-form-label">Categorie</label>
         <div class="col-sm-5">
-            <select class="form-control" [(ngModel)]="ticket.categorie_id" 
+            <select class="form-control" [(ngModel)]="ticket.categorie_id"
             name="categorie_id"
             #categorieVar="ngModel"
             required
@@ -149,14 +142,14 @@
         <div class="col-sm-5">
             <textarea placeholder="Dites nous quelque choses" class="form-control"
             rows="4"
-            [(ngModel)]="ticket.contenu" 
+            [(ngModel)]="ticket.contenu"
             name="contenu"
             #contenuVar="ngModel"
             required
             [ngClass]="{
             'is-invalid': contenuVar.touched && !contenuVar.valid
                 }">
-                
+
 
           </textarea>
           <div class="invalid-feedback">

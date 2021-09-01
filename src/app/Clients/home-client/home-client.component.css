@@ -5,7 +5,7 @@ body{
     text-align: center;
     padding-top:50%;
 }
-B{
+b{
     padding: 5px;
     background-color: rgb(34, 177, 76);
 }
@@ -15,10 +15,6 @@ h1{
 }
 a{
     color: white;
-}
-a:hover{
-    color: white;
-    text-decoration: none;
 }
 .container{
     margin-top: -600px;
