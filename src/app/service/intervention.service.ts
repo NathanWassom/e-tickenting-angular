@@ -18,13 +18,12 @@ export class InterventionService {
     );
   }
 
-  addIntervention(ticket_id: number, user_id: number, duree: string, note: string, termine: boolean, resolu: string): Observable<Intervention> {
-    var resolve: number = 0;
+  addIntervention(ticket_id: number, user_id: number, duree: string, note: string, termine: number, resolu: string): Observable<Intervention> {
+    var resolve: any = 1;
 
     if (resolu !== '') {
-      resolve = Number(resolu);
+      resolve = +resolu;
     }
-
     return this.http.post<Intervention>(
       `${environment.apiDomain}/interventions`,
       {

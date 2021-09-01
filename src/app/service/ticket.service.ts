@@ -29,7 +29,6 @@ export class TicketService {
 
   public newTickets(): Observable<any[]> {
     return this.http.get<any[]>(environment.apiDomain+'/tickets').pipe(
-      tap((t) => console.log(t)),
       map((t) => {
         const newTicket = t.filter((x) => x.statut === 0);
         return newTicket;
@@ -41,10 +40,7 @@ export class TicketService {
 
 
   public getOneTicket(id:number): Observable<Tickets> {
-    return this.http.get<Tickets>(`${environment.apiDomain}/tickets/${id}`)
-    .pipe(
-      tap((t) => console.log(t))
-      );
+    return this.http.get<Tickets>(`${environment.apiDomain}/tickets/${id}`);
 
 
   }

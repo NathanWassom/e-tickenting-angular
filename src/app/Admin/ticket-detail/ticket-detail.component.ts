@@ -39,14 +39,12 @@ export class TicketDetailComponent implements OnInit {
 
     this.ticketService.getOneTicket(this.id).subscribe({
       next: (ticket) => {
-        console.log(ticket);
         this.ticket = ticket;
       },
     });
 
     this.interventionSrv.getInterventionsByTcket(this.id).subscribe({
       next: (t) => {
-        console.log(t);
         this.interventions = t;
       },
     });
@@ -58,6 +56,7 @@ export class TicketDetailComponent implements OnInit {
       this.resolveBtnRadio = true;
     } else {
       this.resolveBtnRadio = false;
+      this.resolu = '';
     }
   }
 
@@ -68,16 +67,17 @@ export class TicketDetailComponent implements OnInit {
   addIntervention(data: NgForm) {
 
     if (data.valid) {
-      this.interventionSrv
-        .addIntervention(
-          this.id,
-          this.user_id,
-          data.value.duree,
-          data.value.note,
-          Boolean(data.value.termine),
-          this.resolu
-        )
-        .subscribe({ next: () => (data.value.note = '') });
-    }
+        var termine = +this.intervention.termine!;
+        this.interventionSrv
+          .addIntervention(
+            this.id,
+            this.user_id,
+            data.value.duree,
+            data.value.note,
+            termine,
+            this.resolu
+          )
+          .subscribe({ next: () => (data.value.note = '') });
+      }
   }
 }
