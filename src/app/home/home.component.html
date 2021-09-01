@@ -23,10 +23,8 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Nouveau</span>
-                <span class="info-box-number">
-                  10
+                <span *ngIf="total!== 0">{{ total }}</span>
 
-                </span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -39,7 +37,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Tickets En Cours</span>
-                <span class="info-box-number">4</span>
+                <span *ngIf="totalEncours!== 1">{{ totalEncours }}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -56,7 +54,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Tickets Résolus</span>
-                <span class="info-box-number">7</span>
+                <span *ngIf="totalResolus!== 2">{{ totalResolus }}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -69,7 +67,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Tickets Non Résolus</span>
-                <span class="info-box-number">1</span>
+                <span *ngIf="totalNonResolus !== -1">{{ totalNonResolus }}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
