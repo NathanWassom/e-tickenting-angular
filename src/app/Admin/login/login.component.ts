@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.isAuth = this.authService.isAuth;
+    // this.isAuth = this.authService.isAuth;
   }
 
   onSignIn(signInForm: NgForm) {
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
             if (!res) {
               this.router.navigate(['/auth/sign-in']);
             }
-            this.isAuth = this.authService.isAuth;
+            // this.isAuth = this.authService.isAuth;
             this.router.navigate(['/cpanel/dashboard']);
           },
           error: () => this.checkLog = true
