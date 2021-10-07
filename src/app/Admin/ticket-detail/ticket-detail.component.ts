@@ -77,7 +77,12 @@ export class TicketDetailComponent implements OnInit {
             termine,
             this.resolu
           )
-          .subscribe({ next: () => (data.value.note = '') });
+          .subscribe({
+            next: () => {
+              data.value.note = '';
+              location.reload();
+            }
+          });
       }
   }
 }
