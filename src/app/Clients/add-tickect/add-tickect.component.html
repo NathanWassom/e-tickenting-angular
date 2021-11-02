@@ -27,10 +27,35 @@
 <form novalidate (ngSubmit)="addTicket(data)" #data="ngForm" class="titre">
 
   <div class="form-group row">
-    <div class=" nom col-sm-2"></div>
-    <label class="col-sm-0 col-form-label">Titre<span class="etoile">*</span> </label>
-    <div class="col-sm-8">
-        <input class="titres form-control" type="text"  placeholder="Attribuez un titre à votre problème"
+    <div class="col-sm-2"></div>
+    <label class="col-sm-1 col-form-label" >Ticket Pour<span class="etoile">*</span></label>
+    <div class="col-sm-5">
+        <select class="form-control"  placeholder="Veuillez sélectionner le système pour lequel vous souhaiteriez emmètre un ticket
+        "
+        [(ngModel)]="ticket.categorie_id"
+        name="categorie_id"
+        #categorieVar="ngModel"
+        required
+        [ngClass]="{
+              'is-invalid': categorieVar.touched && !categorieVar.valid
+            }"
+            >
+            <div class="invalid-feedback">
+              <span class="text-danger" *ngIf="categorieVar.errors?.required">
+                Veuillez sélectionner le système pour lequel vous souhaiteriez emmètre un ticket
+              </span>
+            </div>
+
+            <option *ngFor="let cat of categories" value="{{ cat.id }}">{{ cat.nom }}</option>
+        </select>
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <div class="col-sm-2"></div>
+    <label class="col-sm-1 col-form-label">Titre<span class="etoile">*</span> </label>
+    <div class="col-sm-5">
+        <input class="form-control" type="text"  placeholder="Attribuez un titre à votre problème"
         [(ngModel)]="ticket.titre"
         name="titre"
         required
@@ -46,7 +71,29 @@
         </div>
     </div>
   </div>
+  <div class="form-group row">
+    <div class="col-sm-2"></div>
+    <label class="col-sm-1 col-form-label" >Gestionnaire sous-traitant<span class="etoile">*</span></label>
+    <div class="col-sm-5">
+        <select class="form-control"  placeholder="Veuillez sélectionner le gestionnaire qui suit votre dossier"
+        [(ngModel)]="ticket.user_id"
+        name="manager_id"
+        #categorieVar="ngModel"
+        required
+        [ngClass]="{
+              'is-invalid': categorieVar.touched && !categorieVar.valid
+            }"
+            >
+            <div class="invalid-feedback">
+              <span class="text-danger" *ngIf="categorieVar.errors?.required">
+                Veuillez sélectionner le gestionnaire qui suit votre dossier
+              </span>
+            </div>
 
+            <option *ngFor="let manager of managers" value="{{ manager.id }}">{{ manager.nom }}</option>
+        </select>
+    </div>
+  </div>
 
     <div class="form-group row">
         <div class="col-sm-2"></div>
@@ -135,29 +182,7 @@
 
       </div>
     </div>
-    <div class="form-group row">
-      <div class="col-sm-2"></div>
-      <label class="col-sm-1 col-form-label" >Catégorie<span class="etoile">*</span></label>
-      <div class="col-sm-5">
-          <select class="form-control"  placeholder="Choississez la catégorie"
-          [(ngModel)]="ticket.categorie_id"
-          name="categorie_id"
-          #categorieVar="ngModel"
-          required
-          [ngClass]="{
-                'is-invalid': categorieVar.touched && !categorieVar.valid
-              }"
-              >
-              <div class="invalid-feedback">
-                <span class="text-danger" *ngIf="categorieVar.errors?.required">
-                  Veuillez sélectionner une categorie
-                </span>
-              </div>
-
-              <option *ngFor="let cat of categories" value="{{ cat.id }}">{{ cat.nom }}</option>
-          </select>
-      </div>
-    </div>
+   
     <div class="form-group row">
       <div class="col-sm-2"></div>
       <label class="col-sm-1 col-form-label">Contenu<span class="etoile">*</span></label>

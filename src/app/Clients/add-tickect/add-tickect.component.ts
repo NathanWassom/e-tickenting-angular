@@ -7,6 +7,8 @@ import { TicketService } from 'src/app/service/ticket.service';
 import { CategoryService } from 'src/app/service/category.service';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { User } from 'src/app/model/user.model';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-add-tickect',
@@ -23,18 +25,31 @@ export class AddTickectComponent implements OnInit {
 
   categories!: Category[];
 
+  managers!: any;
+
   public newTicket: Tickets = new Tickets();
 
   constructor(
-    private ticketService: TicketService,
-    private router: Router,
     private _catService: CategoryService,
+
+    private _userService: UserService,
+
     private http: HttpClient
   ) {}
 
   ngOnInit(): void {
+    this._userService.getManagers().subscribe({
+      next: (manager) => {
+        this.managers = manager;
+        console.log(this.managers);
+      },
+    });
+
     this._catService.getCategories().subscribe({
-      next: (cat) => (this.categories = cat),
+      next: (cat) => {
+        this.categories = cat;
+        console.log(this.categories);
+      },
     });
   }
 
@@ -44,40 +59,38 @@ export class AddTickectComponent implements OnInit {
   }
 
   public addTicket(data: NgForm) {
-      if (data.valid) {
+    if (data.valid) {
+      var formData: any = new FormData();
+      formData.append('piece_jointe', this.ticket.piece_jointe);
+      formData.append('nom', data.value.nom);
+      formData.append('entreprise', data.value.entreprise);
+      formData.append('email', data.value.email);
+      formData.append('categorie_id', data.value.categorie_id);
+      formData.append('contenu', data.value.contenu);
+      formData.append('titre', data.value.titre);
+      formData.append('tel', data.value.tel);
+      formData.append('manager_id', data.value.manager_id);
 
-        var formData: any = new FormData();
-        formData.append('piece_jointe', this.ticket.piece_jointe);
-        formData.append('nom', data.value.nom);
-        formData.append('entreprise', data.value.entreprise);
-        formData.append('email', data.value.email);
-        formData.append('categorie_id', data.value.categorie_id);
-        formData.append('contenu', data.value.contenu);
-        formData.append('titre', data.value.titre);
-        formData.append('tel', data.value.tel);
-
-        this.http.post(environment.apiDomain + '/tickets', formData).subscribe({
-          next: () => {
-            this.isInsert = true;
-            this.responseText = 'Ticket crée avec success!';
-            this.labelColor = 'success';
-            data.reset({
-              nom: '',
-              email: '',
-              contenu: '',
-              tel: '',
-            });
-          },
-          error: () => {
-            this.isNotInsert = true;
-            this.responseText =
-              'Une erreur est survenue lors de la création du ticket!';
-            this.labelColor = 'danger';
-          },
-        });
-
-
-      }
+      this.http.post(environment.apiDomain + '/tickets', formData).subscribe({
+        next: () => {
+          this.isInsert = true;
+          this.responseText = 'Ticket crée avec success!';
+          this.labelColor = 'success';
+          data.reset({
+            nom: '',
+            email: '',
+            contenu: '',
+            tel: '',
+          });
+        },
+        error: () => {
+          this.isNotInsert = true;
+          this.responseText =
+            'Une erreur est survenue lors de la création du ticket!';
+          this.labelColor = 'danger';
+        },
+      });
+    }
   }
 
   closeLabel() {
@@ -86,5 +99,3 @@ export class AddTickectComponent implements OnInit {
 
   // console.log("valeurs: ", JSON.stringify(data.value));
 }
-
-

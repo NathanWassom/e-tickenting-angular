@@ -68,4 +68,8 @@ export class UserService {
       password,
     });
   }
+
+  public getManagers(): Observable<any[]> {
+    return this.http.get<any[]>(environment.apiDomain + '/get-account-manager');
+  }
 }
