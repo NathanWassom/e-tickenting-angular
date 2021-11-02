@@ -21,7 +21,7 @@ a{
     /* margin:auto; */
 }
 button{
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: bold;
     color:white;
     background-color: green;
@@ -30,12 +30,13 @@ button{
     transform: skew(-15deg);
     cursor: pointer;
     transition:0.2s;
-    box-shadow: 15px 15px 0px black;
+    box-shadow: 10px 10px 0px black;
+    margin-top: 2%;
 }
 
 button:hover{
     padding: right 80px;
-    box-shadow: 15px 15px 0px rgb(34, 177, 76);;
+    box-shadow: 10px 10px 0px rgb(34, 177, 76);;
 
 }
 
@@ -57,7 +58,7 @@ span.arrow i{
 span.arrow i:nth-child(2){
     position:absolute;
     right:0;
-    top:6px;
+    top:4px;
     animation-delay: 0.5s;
 
 }
@@ -65,18 +66,18 @@ span.arrow i:nth-child(2){
 span.arrow i:nth-child(3){
     position:absolute;
     right:0;
-    top:6px;
+    top:4px;
     animation-delay: 1s;
 
 
 }
 
 button:hover i:nth-child(2) {
-    right: -20px;
+    right: -10px;
 }
 
 button:hover i:nth-child(3) {
-    right: -40px;
+    right: -20px;
 }
 
 button:hover i {
