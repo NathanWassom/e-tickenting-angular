@@ -32,8 +32,11 @@
 
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-tous" role="tabpanel" aria-labelledby="nav-tous-tab">
+            <div class="form-group">
+              <input type="text" class="form-control" name="manager" placeholder="Entrez la recherche" [(ngModel)]="manager" (ngModelChange)="search()">
+            </div>
             <div class="row">
-              <div class="col-md-15">
+              <div class="col-md-12">
                 <div class="">
                   <table class="table table-responsive-xl">
                     <thead>
@@ -42,6 +45,7 @@
                         <th>Email</th>
                         <th>Entrepise</th>
                         <th>Titre</th>
+                        <th>Gestionnaire en charge</th>
                         <th>Statut</th>
                         <th>Action</th>
                       </tr>
@@ -49,19 +53,22 @@
 
                     <tbody>
 
-                      <tr class="alert" role="alert" *ngFor="let ticket of tickets; let index = index">
+                      <tr class="alert" role="alert" *ngFor="let ticket of tickets | paginate: {itemsPerPage: 10, currentPage: page, totalItems: totalLength}; let index = index">
 
                         <td>
-                          {{index+1}}
+                          {{ index + 1 }}
                         </td>
                         <td>
-                          {{ticket.email_client}}
+                          {{ticket.client.email}}
                         </td>
                         <td>
-                          {{ticket.entreprise_client}}
+                          {{ticket.client.entreprise}}
                         </td>
                         <td>
                           {{ticket.titre}}
+                        </td>
+                        <td>
+                          {{ticket.user.nom}}
                         </td>
                         <td>
                           <span class="badge badge-{{
@@ -95,6 +102,7 @@
 
                     </tbody>
                   </table>
+                  <pagination-controls class="text-center" (pageChange)="page = $event"></pagination-controls>
                 </div>
               </div>
             </div>
@@ -110,6 +118,7 @@
                         <th>Email</th>
                         <th>Entrepise</th>
                         <th>Titre</th>
+                        <th>Gestionnaire en charge</th>
                         <th>Statut</th>
                         <th>Action</th>
                       </tr>
@@ -117,20 +126,22 @@
 
                     <tbody>
 
-                      <tr class="alert" role="alert" *ngFor="let ticket of newTickets; let index = index">
+                      <tr class="alert" role="alert" *ngFor="let ticket of newTickets | paginate: {itemsPerPage: 10, currentPage: pageNewTicket, totalItems: totalLengthNewTicket}; let index = index">
 
                         <td>
-                          {{index+1}}
+                          {{ index + 1 }}
                         </td>
                         <td>
-                          {{ticket.email_client}}
+                          {{ticket.client.email}}
                         </td>
-
                         <td>
-                          {{ticket.entreprise_client}}
+                          {{ticket.client.entreprise}}
                         </td>
                         <td>
                           {{ticket.titre}}
+                        </td>
+                        <td>
+                          {{ticket.user.nom}}
                         </td>
                         <td>
                           <span class="badge badge-primary">Nouveau</span>
@@ -145,6 +156,7 @@
 
                     </tbody>
                   </table>
+                  <pagination-controls class="text-center" (pageChange)="pageNewTicket = $event"></pagination-controls>
                 </div>
               </div>
             </div>
@@ -162,6 +174,7 @@
                         <th>Email</th>
                         <th>Entrepise</th>
                         <th>Titre</th>
+                        <th>Gestionnaire en charge</th>
                         <th>Statut</th>
                         <th>Action</th>
                       </tr>
@@ -169,20 +182,23 @@
 
                     <tbody>
 
-                      <tr class="alert" role="alert" *ngFor="let ticket of ticketEnCours; let index = index">
+                      <tr class="alert" role="alert" *ngFor="let ticket of pendingTickets | paginate: {itemsPerPage: 10, currentPage: page, totalItems: totalLengthPendingTicket}; let index = index">
 
 
                         <td>
-                          {{index+1}}
+                          {{ index + 1 }}
                         </td>
                         <td>
-                          {{ticket.email_client}}
+                          {{ticket.client.email}}
                         </td>
                         <td>
-                          {{ticket.entreprise_client}}
+                          {{ticket.client.entreprise}}
                         </td>
                         <td>
                           {{ticket.titre}}
+                        </td>
+                        <td>
+                          {{ticket.user.nom}}
                         </td>
                         <td>
                           <span class="badge badge-warning">En cours</span>
@@ -197,6 +213,7 @@
 
                     </tbody>
                   </table>
+                  <pagination-controls class="text-center" (pageChange)="pagePendingTicket = $event"></pagination-controls>
                 </div>
               </div>
             </div>
@@ -213,6 +230,7 @@
                         <th>Email</th>
                         <th>Entrepise</th>
                         <th>Titre</th>
+                        <th>Gestionnaire en charge</th>
                         <th>Statut</th>
                         <th>Action</th>
                       </tr>
@@ -220,19 +238,22 @@
 
                     <tbody>
 
-                      <tr class="alert" role="alert" *ngFor="let ticket of endedTicket; let index = index">
+                      <tr class="alert" role="alert" *ngFor="let ticket of closedTicket | paginate: {itemsPerPage: 10, currentPage: page, totalItems: totalLengthClosedTicket}; let index = index">
 
                         <td>
-                          {{index+1}}
+                          {{ index + 1 }}
                         </td>
                         <td>
-                          {{ticket.email_client}}
+                          {{ticket.client.email}}
                         </td>
                         <td>
-                          {{ticket.entreprise_client}}
+                          {{ticket.client.entreprise}}
                         </td>
                         <td>
                           {{ticket.titre}}
+                        </td>
+                        <td>
+                          {{ticket.user.nom}}
                         </td>
                         <td>
                           <span class="badge badge-{{
@@ -255,6 +276,7 @@
 
                     </tbody>
                   </table>
+                  <pagination-controls class="text-center" (pageChange)="pageClosedTicket = $event"></pagination-controls>
                 </div>
               </div>
             </div>

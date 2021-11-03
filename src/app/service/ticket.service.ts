@@ -5,9 +5,8 @@ import { map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Tickets } from '../Admin/list-tickect/ticket';
 
-
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
 @Injectable({
@@ -16,86 +15,102 @@ const httpOptions = {
 export class TicketService {
   constructor(private http: HttpClient) {}
 
-
   tickets: Tickets[] | undefined;
-  newTicket: Tickets[] | undefined;
-
 
   public getAllTickets(): Observable<any[]> {
-    return this.http.get<any[]>(environment.apiDomain+'/tickets')
+    return this.http.get<any[]>(environment.apiDomain + '/tickets');
   }
 
-
-
   public newTickets(): Observable<any[]> {
-    return this.http.get<any[]>(environment.apiDomain+'/tickets').pipe(
-      map((t) => {
-        const newTicket = t.filter((x) => x.statut === 0);
-        return newTicket;
+    return this.http.get<any[]>(environment.apiDomain + '/get-new-tickets');
+  }
+
+  public pendingTickets(): Observable<any[]> {
+    return this.http.get<any[]>(environment.apiDomain + '/get-pending-tickets');
+  }
+
+  public closedTickets(): Observable<any[]> {
+    return this.http.get<any[]>(environment.apiDomain + '/get-closed-tickets');
+  }
+
+  public getOneTicket(id: number): Observable<Tickets> {
+    return this.http.get<Tickets>(`${environment.apiDomain}/tickets/${id}`);
+  }
+
+  public ajouterTicket(
+    nom: string,
+    entreprise: string,
+    email: string,
+    categorie_id: number,
+    contenu: string,
+    titre: string,
+    tel: string
+  ): Observable<any> {
+    const data = JSON.parse(localStorage.getItem(environment.localStorageKey)!);
+    const user_id = data['id'];
+    return this.http
+      .post<Tickets>(environment.apiDomain + '/tickets', {
+        nom,
+        entreprise,
+        email,
+        categorie_id,
+        contenu,
+        titre,
+        tel,
+        user_id,
       })
+      .pipe(tap((t) => console.log(t)));
+  }
+
+  addTicketByClient(
+    nom: string,
+    entreprise: string,
+    email: string,
+    categorie_id: number,
+    contenu: string,
+    titre: string,
+    tel: string,
+    manager_id: number
+  ): Observable<any> {
+    return this.http.post<Tickets>(
+      environment.apiDomain + '/add-ticket-by-client',
+      {
+        nom,
+        entreprise,
+        email,
+        categorie_id,
+        contenu,
+        titre,
+        tel,
+        manager_id,
+      }
     );
   }
 
-
-
-
-  public getOneTicket(id:number): Observable<Tickets> {
-    return this.http.get<Tickets>(`${environment.apiDomain}/tickets/${id}`);
-
-
-  }
-
-
-  public ajouterTicket(
-
-      nom: string,
-      entreprise :string,
-      email:string ,
-      categorie_id: number,
-      contenu :string,
-      titre :string,
-      tel: string,
-  ): Observable<any>{
-    const data = JSON.parse(localStorage.getItem(environment.localStorageKey)!);
-    const user_id = data['id'];
-    return this.http.post<Tickets>(environment.apiDomain+'/tickets',{
-      nom,
-      entreprise,
-      email,
-      categorie_id,
-      contenu,
-      titre,
-      tel,
-      user_id,
-    } ).pipe(tap(t => console.log(t))  )
-  }
-
   updateTicket(
-      id:number,
-      nom: string,
-      entreprise :string,
-      email:string ,
-      contenu :string,
-      titre :string,
-      tel: string,
-      categorie_id:string
+    id: number,
+    nom: string,
+    entreprise: string,
+    email: string,
+    contenu: string,
+    titre: string,
+    tel: string,
+    categorie_id: string
   ): Observable<any> {
-      return this.http
-      .put(`${environment.apiDomain}/tickets/${id}`, {
+    return this.http.put(`${environment.apiDomain}/tickets/${id}`, {
       nom,
       entreprise,
       email,
       contenu,
       titre,
       tel,
-      categorie_id
-      });
+      categorie_id,
+    });
   }
 
-
-  delete(id: number| undefined): Observable<any> {
-    return this.http.put(`${environment.apiDomain}/tickets/${id}/delete`, {id});
+  delete(id: number | undefined): Observable<any> {
+    return this.http.put(`${environment.apiDomain}/tickets/${id}/delete`, {
+      id,
+    });
   }
-
-
 }

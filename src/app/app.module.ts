@@ -24,6 +24,8 @@ import { EditTicketComponent } from './Admin/edit-ticket/edit-ticket.component';
 import { HomeClientComponent } from './Clients/home-client/home-client.component';
 import { EditInterventionComponent } from './Admin/intervention/edit-intervention/edit-intervention.component';
 import { DetailInterventionComponent } from './Admin/intervention/detail-intervention/detail-intervention.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -52,9 +54,13 @@ import { DetailInterventionComponent } from './Admin/intervention/detail-interve
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-
+    NgxPaginationModule,
+    Ng2SearchPipeModule,
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, TicketService],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    TicketService,
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
